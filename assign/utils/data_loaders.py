@@ -14,7 +14,7 @@ from nltk.tokenize import word_tokenize
 
 from sklearn.model_selection import train_test_split
 
-from audio_module.utils.sound_utils import convert_to_wav, length_normalize
+from ..utils.speaker_encoder_preprocess import load_audio
 
 
 def dataset_creator(vars):
@@ -45,6 +45,7 @@ def dataset_creator(vars):
 
 
 def load_target(vars, company, start_date):
+	print(company, start_date)
 	target_path = vars.DATA_PATH+'targets/'+company+'/daily_prices.csv'
 	all_data = pd.read_csv(target_path)
 
@@ -60,7 +61,7 @@ def load_target(vars, company, start_date):
 
 	next_thirty_dates = all_data[start_idx:start_idx+30]
 
-	target = np.array(list(next_thirty_dates['Adj Close**']))
+	target = np.array(list(next_thirty_dates['Adj Close']))
 
 	return target
 
@@ -102,30 +103,25 @@ def data_loader(vars, mode='train', comp_list=[]):
 	idxs = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)
 
 	for idx in idxs:
-		company = all_datas[idx]
-		start_date = company[:company.rindex('_')]
+		folder = all_datas[idx]
+		company, start_date = folder.split('_')
 
 		# Loading Text Features
 		text_features = []
 		aud_features = []
 
-		with open(data_folder+company+'/Text.txt') as f:
+		with open(data_folder+folder+'/Text.txt') as f:
 			sentences = f.read()
 			sentences = sentences.split('\n')
 			sentences = tokenizer.texts_to_sequences(sentences)
-			features = seq.texts_to_sequences(sentences, maxlen=vars.MAX_SENTENCE_LENGTH)
+			features = seq.pad_sequences(sentences, maxlen=vars.MAX_SENTENCE_LENGTH)
 			text_features.append(features)
 
 		txts.append(text_features)
 
 		# Loading Audio Features
-		for i in listdir(data_folder+company+'/Audio/'):
-			convert_to_wav(data_folder+company+'/Audio/'+i)
-			aud, _ = librosa.load(data_folder+company+'/Audio/'+i[:i.rindex('.')]+'.wav')
-			aud, _ = librosa.effects.trim(aud, top_db=20)
-			aud = length_normalize(vars, aud)
-			aud = np.abs(librosa.stft(aud, n_fft=vars.N_FFT))
-
+		for i in listdir(data_folder+folder+'/Audio/'):
+			aud = load_audio(vars, data_folder+folder+'/Audio/'+i)
 			aud_features.append(aud)
 
 		auds.append(aud_features)

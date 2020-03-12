@@ -1,6 +1,6 @@
 from ..models.base import BASE
 
-from pase.models.frontend import wf_builder
+# from pase.models.frontend import wf_builder
 from keras.models import load_model, Model
 from keras.layers import Input
 

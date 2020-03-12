@@ -65,11 +65,7 @@ def download_csv(vars, comp_code, start_date, end_date):
 	return b''
 
 def get_companies_dates(vars):
-	all_comps = listdir(vars.DATA_PATH+'ftrs/')
-
-	url = vars.YAHOO_DOWNLOAD_FINLINK
-
-	links = []
+	all_comps = listdir(vars.DATA_PATH+'features/')
 
 	comp_info = pd.read_csv(vars.DATA_PATH+'comp_codes.csv')
 
@@ -93,7 +89,6 @@ def get_companies_dates(vars):
 				if '"' in i[0]:
 					i[0] = i[0].replace('"', "")
 				if name in i[0]:
-					# print('{} -> {} -> {}'.format(comp, i[0], i[1]))
 					comp_code = i[1]
 					break
 
@@ -118,19 +113,3 @@ def get_companies_dates(vars):
 
 		else:
 			print('#### Couldn\'t Find {}'.format(comp))
-
-
-def get_data(vars):
-	target_path = vars.DATA_PATH+'targets/'
-
-	with open(vars.DATA_PATH+'stock_links.txt', 'r') as f:
-		links = f.read()
-		links = links.split('\n')
-
-		for link in links:
-			comp_name, stock_link = link.split(' -> ')
-			if isdir(vars.DATA_PATH+'targets/'+comp_name):
-				continue
-			else:
-				mkdir(vars.DATA_PATH+'targets/'+comp_name)
-				data = requests.get(stock_link)
