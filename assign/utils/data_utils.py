@@ -5,6 +5,11 @@ import pandas as pd
 import shutil
 
 from os import listdir
+from os.path import exists
+
+import pickle
+
+import torch
 
 import keras.preprocessing.text as text
 import keras.preprocessing.sequence as seq
@@ -14,7 +19,50 @@ from nltk.tokenize import word_tokenize
 
 from sklearn.model_selection import train_test_split
 
-from ..utils.speaker_encoder_preprocess import load_audio
+
+import numpy as np
+import librosa
+
+import subprocess
+
+
+def convert_to_wav(input_file):
+	output_file = input_file[:input_file.rindex('.')]+'.wav'
+	command = 'ffmpeg -y -i {} -acodec pcm_s16le -ac 1 -ar 16000 {} -nostats -hide_banner -loglevel quiet'.format(input_file, output_file)
+	subprocess.call(command, shell=True)
+
+
+def length_normalize(audio, sample_len):
+	if len(audio) < sample_len:
+		sample = np.zeros(sample_len)
+		sample[:len(audio)] = audio
+	else:
+		sample = audio[:sample_len]
+
+	return sample
+
+
+def load_audio(vars, aud_path):
+	X, _ = librosa.load(aud_path, res_type='kaiser_fast', sr=vars.FRAME_RATE, mono=True)
+	features = []
+
+	max_aud_len = int(vars.FRAME_RATE * vars.MAX_AUDIO_DURATION)
+
+	aud = length_normalize(X, max_aud_len)
+
+	num_frames_per_segment = int(vars.MAX_SEGMENT_LENGTH * vars.FRAME_RATE)
+
+	num_samples = int(max_aud_len // num_frames_per_segment)
+
+	for i in range(num_samples):
+		sample = aud[int(i*num_frames_per_segment) : int((i+1)*num_frames_per_segment)]
+		mfccs = np.mean(librosa.feature.mfcc(y=sample, sr=vars.FRAME_RATE, n_mfcc=13), axis=0)
+		features.append(mfccs)
+
+	features = np.array(features)
+	features =np.expand_dims(features, axis=2)
+
+	return features
 
 
 def dataset_creator(vars):
@@ -67,70 +115,26 @@ def load_target(vars, company, start_date):
 
 
 def prepare_data(vars):
-	tokenizer = text.Tokenizer(num_words=vars.VOCAB_SIZE)
+	if exists(vars.TOKENIZER_PATH):
+		with open(vars.TOKENIZER_PATH, 'rb') as f:
+			tokenizer = pickle.load(f)
+	else:
+		tokenizer = text.Tokenizer(num_words=vars.VOCAB_SIZE)
 
-	sentences = []
+		sentences = []
 
-	for i in listdir(vars.DATA_PATH+'data/train/'):
-		with open(vars.DATA_PATH+'data/train/'+i+'/Text.txt', 'r') as f:
-			data = f.read()
-			for sentence in data:
-				sentences.append(sentence)
+		for i in listdir(vars.DATA_PATH+'data/train/'):
+			with open(vars.DATA_PATH+'data/train/'+i+'/Text.txt', 'r') as f:
+				data = f.read()
+				for sentence in data:
+					sentences.append(sentence)
 
-	tokenizer.fit_on_texts(sentences)
+		tokenizer.fit_on_texts(sentences)
+
+		with open(vars.TOKENIZER_PATH, 'wb') as f:
+			pickle.dump(tokenizer, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 	return tokenizer
-
-
-def data_loader(vars, mode='train', comp_list=[]):
-	data_folder = ''
-	batch_size = 0
-
-	if mode == 'train':
-		data_folder = vars.DATA_PATH+'data/train/'
-		batch_size = vars.TRAIN_BATCH_SIZE
-	else:
-		data_folder = vars.DATA_PATH+'data/test/'
-
-	txts = []
-	auds = []
-	prices = []
-
-	all_datas = listdir(data_folder)
-
-	tokenizer = prepare_data(vars)
-
-	idxs = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)
-
-	for idx in idxs:
-		folder = all_datas[idx]
-		company, start_date = folder.split('_')
-
-		# Loading Text Features
-		text_features = []
-		aud_features = []
-
-		with open(data_folder+folder+'/Text.txt') as f:
-			sentences = f.read()
-			sentences = sentences.split('\n')
-			sentences = tokenizer.texts_to_sequences(sentences)
-			features = seq.pad_sequences(sentences, maxlen=vars.MAX_SENTENCE_LENGTH)
-			text_features.append(features)
-
-		txts.append(text_features)
-
-		# Loading Audio Features
-		for i in listdir(data_folder+folder+'/Audio/'):
-			aud = load_audio(vars, data_folder+folder+'/Audio/'+i)
-			aud_features.append(aud)
-
-		auds.append(aud_features)
-
-		labels = load_target(vars, company, start_date)
-
-		prices.append(labels)
-
-	return np.array(txts), np.array(auds), np.array(prices)
 
 
 def get_coefs(word, *arr):

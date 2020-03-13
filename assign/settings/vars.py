@@ -13,13 +13,17 @@ N_FFT = 1024
 HOP_LENGTH = 512
 FRAME_RATE = 22050*2
 VOCAB_SIZE = 50000
-EMBEDDING_SIZE = 256
+EMBEDDING_SIZE = 768
+NUM_SEGMENTS_PER_AUDIO = int(MAX_AUDIO_DURATION//MAX_SEGMENT_LENGTH)
+AUDIO_EMBEDDING_SIZE = 3456
 NUM_DAYS_PRED = 30
 TRAIN_SPLIT = 0.95
+TRAIN_BATCH_SIZE = 1
+VALID_BATCH_SIZE = 1
+
 DATA_PATH = 'D:/iiit_assign/data/'
 EMBEDDING_FILE = 'D:/iiit_assign/data/embeddings/glove.840B.300d.txt'
-TRAIN_BATCH_SIZE = 2
-VALID_BATCH_SIZE = 2
+TOKENIZER_PATH = 'D:/iiit_assign/assign/checkpoints/tokenizer.pickle'
 
 YAHOO_DOWNLOAD_FINLINK = 'https://query1.finance.yahoo.com/v7/finance/download/{}?period1={}&period2={}&interval=1d&events=history&crumb={}'
 YAHOO_FINLINK = 'https://finance.yahoo.com/quote/{}/history?p={}'
