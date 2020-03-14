@@ -15,9 +15,9 @@ import tensorflow as tf
 
 
 class MODEL(BASE):
-	def __init__(self, vars, model='assign', inp_shape=()):
+	def __init__(self, vars, model='assign'):
 		self.model_name = model
-		self.inp_shape = inp_shape
+		self.inp_shape = (vars.MAX_SENTENCES,)
 		self.speech_encoder = SPEECH_ENCODER(vars).model
 		self.text_encoder = TEXT_ENCODER(vars).model
 
