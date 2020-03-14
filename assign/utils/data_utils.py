@@ -98,7 +98,7 @@ def load_target(vars, company, start_date):
 	if exists(target_path):
 		all_data = pd.read_csv(target_path)
 	else:
-		target
+		return target
 
 	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])
 	all_data = all_data.sort_values(by='formatted_date', ascending=True)
