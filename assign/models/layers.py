@@ -59,6 +59,18 @@ class Attention(Layer):
 		return input_shape[0],  self.features_dim
 
 
+class REMOVE_DIM(Layer):
+	def __init__(self):
+		super(REMOVE_DIM, self).__init__()
+
+	def call(self, x):
+		out = x[0]
+		out._keras_shape = self.compute_output_shape(x.shape)
+		return out
+
+	def compute_output_shape(self, input_shape):
+		return input_shape[1:]
+
 
 class MERGE(Layer):
 	def __init__(self):

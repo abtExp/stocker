@@ -1,5 +1,7 @@
 import os
 
+from keras.callbacks import EarlyStopping, TensorBoard, ReduceLROnPlateau, ModelCheckpoint
+
 PROJECT_PATH = os.path.abspath(__file__)
 PROJECT_PATH = PROJECT_PATH[:PROJECT_PATH.index('settings')].replace('\\', '/')
 
@@ -20,6 +22,8 @@ NUM_DAYS_PRED = 30
 TRAIN_SPLIT = 0.95
 TRAIN_BATCH_SIZE = 1
 VALID_BATCH_SIZE = 1
+TRAIN_EPOCHS = 10
+STEPS_PER_EPOCH = 100
 
 DATA_PATH = 'D:/iiit_assign/data/'
 EMBEDDING_FILE = 'D:/iiit_assign/data/embeddings/glove.840B.300d.txt'
@@ -27,6 +31,34 @@ TOKENIZER_PATH = 'D:/iiit_assign/assign/checkpoints/tokenizer.pickle'
 
 YAHOO_DOWNLOAD_FINLINK = 'https://query1.finance.yahoo.com/v7/finance/download/{}?period1={}&period2={}&interval=1d&events=history&crumb={}'
 YAHOO_FINLINK = 'https://finance.yahoo.com/quote/{}/history?p={}'
+
+def get_callbacks(model='custom'):
+	all_checks = os.listdir(PROJECT_PATH+'checkpoints/')
+	all_logs = os.listdir(PROJECT_PATH+'logs/')
+	counter = 0
+	max = -1
+
+	for folder in all_checks:
+			if 'checkpoints_{}'.format(model) in folder:
+					if int(folder[folder.rindex('_')+1:]) > max:
+							max = int(folder[folder.rindex('_')+1:])
+
+	counter = max+1
+	check_path = PROJECT_PATH+'checkpoints/checkpoints_{}_{}/'.format(model, counter)
+	logs_path = PROJECT_PATH+'logs/logs_{}_{}/'.format(model, counter)
+
+	if not os.path.isdir(check_path) and not os.path.isdir(logs_path):
+			os.mkdir(check_path)
+			os.mkdir(logs_path)
+
+
+	checkpoint = ModelCheckpoint(check_path+'weights.{epoch:02d}-{loss:.2f}.hdf5', monitor='loss', verbose=0, save_best_only=True, save_weights_only=True)
+	earlystop = EarlyStopping(monitor='loss', min_delta=0, patience=3, verbose=0)
+	tensorboard = TensorBoard(log_dir=logs_path, histogram_freq=0, batch_size=32, write_graph=True, write_grads=True, write_images=True)
+	reducelr = ReduceLROnPlateau(monitor='loss', factor=0.02, patience=1, verbose=0, mode='auto', min_delta=0.0001, cooldown=0, min_lr=0)
+
+	return [checkpoint, tensorboard, reducelr, earlystop]
+
 
 ALL_COMPS = [
 	"3M Company",
