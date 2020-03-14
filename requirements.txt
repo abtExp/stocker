@@ -1,0 +1,7 @@
+torch
+keras
+tensorflow-gpu
+numpy
+librosa
+transformers
+pandas

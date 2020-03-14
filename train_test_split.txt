@@ -1,0 +1,582 @@
+Train Samples (548)
+
+Advance Auto Parts_20170524
+Coty, Inc_20171109
+Molson Coors Brewing Company_20170802
+CBRE Group_20171103
+PPL Corp._20170504
+Nasdaq, Inc._20170131
+Xerox_20170801
+Carmax Inc_20170922
+AMETEK Inc._20170802
+The Clorox Company_20171101
+Henry Schein_20170221
+Bristol-Myers Squibb_20170727
+The Walt Disney Company_20171109
+CIGNA Corp._20170202
+Duke Energy_20171103
+Norwegian Cruise Line_20170222
+The Hershey Company_20171026
+The Clorox Company_20170803
+Caterpillar Inc._20170425
+Kohl's Corp._20171109
+Exxon Mobil Corp._20171027
+Nielsen Holdings_20170727
+United Technologies_20171024
+Intercontinental Exchange_20170207
+Western Union Co_20171102
+Dish Network_20171109
+Ecolab Inc._20171031
+Advanced Micro Devices Inc_20170725
+WestRock_20170426
+Kimberly-Clark_20170725
+Hologic_20170802
+Biogen Inc._20170126
+Western Digital_20171026
+LKQ Corporation_20170427
+Garmin Ltd._20170222
+The Cooper Companies_20170831
+Intuit Inc._20170523
+News Corp. Class A_20170509
+Avery Dennison Corp_20170201
+Alaska Air Group Inc_20171025
+Ross Stores_20171116
+Ameren Corp_20170216
+Newell Brands_20170206
+Marsh & McLennan_20170727
+Lam Research_20170418
+Masco Corp._20170727
+Hanesbrands Inc_20171101
+Verisign Inc._20170727
+eBay Inc._20170419
+Archer-Daniels-Midland Co_20171031
+Archer-Daniels-Midland Co_20170502
+Foot Locker Inc_20171117
+PPL Corp._20170201
+Kraft Heinz Co_20171101
+Stericycle Inc_20170803
+Xcel Energy Inc_20170202
+CenturyLink Inc_20171108
+Alliance Data Systems_20170420
+Dover Corp._20170720
+Kraft Heinz Co_20170503
+Home Depot_20170221
+TE Connectivity Ltd._20170125
+Chevron Corp._20170428
+Lockheed Martin Corp._20170718
+Celgene Corp._20170126
+Western Union Co_20170502
+HP Inc._20170823
+International Paper_20170202
+Verisign Inc._20170427
+HCA Holdings_20170502
+Akamai Technologies Inc_20170502
+Ball Corp_20170803
+Kansas City Southern_20171020
+CME Group Inc._20171026
+Amazon.com Inc._20170202
+Gartner Inc_20171102
+Synopsys Inc._20170215
+Oracle Corp._20170914
+Sysco Corp._20170508
+Dover Corp._20170420
+Symantec Corp._20170510
+Grainger (W.W.) Inc._20170719
+Lowe's Cos._20170524
+Johnson Controls International_20170201
+Altria Group Inc_20170727
+Royal Caribbean Cruises Ltd_20171107
+Edison Int'l_20170501
+Tyson Foods_20170206
+NetApp_20170215
+American Express Co_20170719
+XL Group_20171024
+Wec Energy Group Inc_20170502
+Merck & Co._20170728
+Tractor Supply Company_20170426
+Skyworks Solutions_20170427
+Sealed Air_20170509
+Yum! Brands Inc_20170209
+Hewlett Packard Enterprise_20170905
+Hess Corporation_20170125
+Regeneron_20171108
+Align Technology_20170427
+Darden Restaurants_20171219
+Public Serv. Enterprise Inc._20170428
+D. R. Horton_20170124
+The Walt Disney Company_20170509
+Akamai Technologies Inc_20170207
+Verizon Communications_20171019
+Altria Group Inc_20171026
+Merck & Co._20170502
+Facebook, Inc._20171101
+Kellogg Co._20170504
+Comcast Corp._20170727
+eBay Inc._20170125
+Tractor Supply Company_20171025
+Parker-Hannifin_20170202
+Hilton Worldwide Holdings Inc_20170215
+Alexion Pharmaceuticals_20170427
+Estee Lauder Cos._20170202
+FLIR Systems_20171025
+Seagate Technology_20170124
+Coca-Cola Company (The)_20170209
+Digital Realty Trust Inc_20170216
+General Mills_20170628
+Citigroup Inc._20170118
+Ross Stores_20170228
+The Hershey Company_20170203
+Gap Inc._20170518
+Ford Motor_20170427
+Activision Blizzard_20170209
+Ingersoll-Rand PLC_20170201
+Comerica Inc._20170418
+Mattel Inc._20170727
+Ulta Beauty_20170309
+DaVita Inc._20170801
+DTE Energy Co._20170726
+Apache Corporation_20171102
+Seagate Technology_20171023
+Salesforce.com_20170822
+Church & Dwight_20170803
+The Mosaic Company_20170502
+Incyte_20170504
+Johnson Controls International_20170427
+Verizon Communications_20170420
+Hormel Foods Corp._20170223
+AbbVie Inc._20171027
+The Mosaic Company_20170801
+Alliance Data Systems_20170126
+Campbell Soup_20170519
+Martin Marietta Materials_20170801
+Hewlett Packard Enterprise_20171121
+Schlumberger Ltd._20170421
+Walgreens Boots Alliance_20171025
+Newmont Mining Corporation_20170725
+Autodesk Inc._20170302
+The Clorox Company_20170503
+Kohl's Corp._20170223
+test
+Varian Medical Systems_20170125
+3M Company_20170725
+DaVita Inc._20170502
+Nektar Therapeutics_20170301
+Fidelity National Information Services_20170207
+Perrigo_20171109
+eBay Inc._20170720
+Booking Holdings Inc_20170509
+Archer-Daniels-Midland Co_20170207
+Weyerhaeuser_20170203
+Twitter, Inc._20170426
+General Motors_20171024
+Automatic Data Processing_20170727
+Halliburton Co._20171023
+BorgWarner_20170209
+Aetna Inc_20170502
+EQT Corporation_20170427
+Kellogg Co._20170803
+Waste Management Inc._20170216
+SCANA Corp_20170803
+Nordstrom_20170223
+Quanta Services Inc._20170803
+Skyworks Solutions_20171106
+Skyworks Solutions_20170720
+IPG Photonics Corp._20170502
+United Technologies_20170725
+Hasbro Inc._20171023
+CMS Energy_20170202
+Amgen Inc._20171025
+PepsiCo Inc._20170426
+Hanesbrands Inc_20170502
+Verizon Communications_20170727
+Hewlett Packard Enterprise_20170531
+Walmart_20171116
+Martin Marietta Materials_20170214
+Archer-Daniels-Midland Co_20170801
+Dish Network_20170222
+Pinnacle West Capital_20170224
+American Tower Corp A_20170227
+Emerson Electric Company_20170207
+Red Hat Inc._20170925
+Becton Dickinson_20171102
+Pinnacle West Capital_20170502
+NetApp_20171115
+Snap-On Inc._20170720
+Tapestry, Inc._20170131
+Campbell Soup_20171121
+Regeneron_20170504
+3M Company_20170425
+Gartner Inc_20170808
+Ball Corp_20171102
+ResMed_20171026
+Target Corp._20171115
+CBS Corp._20170807
+Lilly (Eli) & Co._20170425
+Chevron Corp._20170728
+Kohl's Corp._20170511
+Ball Corp_20170504
+Kimberly-Clark_20170124
+Corning Inc._20170124
+SVB Financial_20170427
+The Walt Disney Company_20170808
+Aetna Inc_20171031
+Bristol-Myers Squibb_20170427
+Masco Corp._20171024
+American Tower Corp A_20171031
+Marsh & McLennan_20171026
+Kimberly-Clark_20170424
+Verisign Inc._20171026
+Gartner Inc_20170504
+Tractor Supply Company_20170201
+Texas Instruments_20170124
+General Dynamics_20170127
+General Motors_20170725
+Martin Marietta Materials_20171102
+Quanta Services Inc._20170504
+Walgreens Boots Alliance_20170405
+Avery Dennison Corp_20170426
+Lowe's Cos._20170823
+FleetCor Technologies Inc_20170803
+Stryker Corp._20170727
+Dish Network_20170803
+MSCI Inc_20170504
+Wec Energy Group Inc_20171026
+Alliance Data Systems_20171019
+Tiffany & Co._20170524
+Interpublic Group_20170210
+Automatic Data Processing_20170201
+The Walt Disney Company_20170207
+Nike_20170321
+Automatic Data Processing_20171102
+CenturyLink Inc_20170802
+Amgen Inc._20170725
+LKQ Corporation_20170727
+Ross Stores_20170518
+Wec Energy Group Inc_20170201
+Hasbro Inc._20170424
+Goldman Sachs Group_20170718
+United Parcel Service_20170727
+U.S. Bancorp_20170719
+Garmin Ltd._20170503
+Seagate Technology_20170426
+Motorola Solutions Inc._20171102
+NRG Energy_20170228
+SVB Financial_20170126
+Kraft Heinz Co_20170215
+Royal Caribbean Cruises Ltd_20170801
+WestRock_20171102
+Ventas Inc_20171027
+Rockwell Automation Inc._20170426
+Stericycle Inc_20170504
+Ecolab Inc._20170801
+Becton Dickinson_20170803
+Michael Kors Holdings_20170207
+MGM Resorts International_20170727
+CVS Health_20170209
+AMETEK Inc._20170207
+Cadence Design Systems_20170724
+Rockwell Automation Inc._20170125
+Incyte_20170214
+CIGNA Corp._20170505
+Cummins Inc._20170801
+Gap Inc._20170223
+Cimarex Energy_20170510
+Align Technology_20170131
+Kroger Co._20170302
+Avery Dennison Corp_20170725
+Boeing Company_20170426
+Anthem Inc._20170726
+Twitter, Inc._20170727
+Fortune Brands Home & Security_20170802
+Broadridge Financial Solutions_20170510
+Valero Energy_20170727
+Carmax Inc_20171221
+KLA-Tencor Corp._20170427
+Celgene Corp._20170427
+PerkinElmer_20171102
+Raytheon Co._20170427
+Campbell Soup_20170831
+Abbott Laboratories_20171018
+Vulcan Materials_20170802
+Grainger (W.W.) Inc._20170418
+Humana Inc._20170503
+AmerisourceBergen Corp_20170504
+WestRock_20170124
+Kroger Co._20170615
+JPMorgan Chase & Co._20170714
+Motorola Solutions Inc._20170504
+Intel Corp._20170427
+Sealed Air_20171108
+Comerica Inc._20170117
+Lam Research_20170125
+Automatic Data Processing_20170503
+Waste Management Inc._20170726
+Coca-Cola Company (The)_20170726
+HP Inc._20171121
+PACCAR Inc._20170725
+Regions Financial Corp._20170721
+CMS Energy_20170501
+Quanta Services Inc._20170221
+Mastercard Inc._20170131
+Illumina Inc_20170801
+ABIOMED Inc_20170504
+Illinois Tool Works_20170424
+AT&T Inc._20170425
+Garmin Ltd._20171101
+Amazon.com Inc._20170427
+Mattel Inc._20171026
+Hologic_20171108
+Viacom Inc._20171116
+Hilton Worldwide Holdings Inc_20170502
+PepsiCo Inc._20171004
+Anthem Inc._20170201
+Stryker Corp._20171026
+Norfolk Southern Corp._20170426
+Regeneron_20170803
+Baxter International Inc._20170726
+CA, Inc._20170802
+American Tower Corp A_20170427
+The Bank of New York Mellon Corp._20170720
+Microsoft Corp._20170720
+Ecolab Inc._20170221
+Activision Blizzard_20170504
+Cognizant Technology Solutions_20170803
+Interpublic Group_20170421
+Nucor Corp._20171019
+Alexion Pharmaceuticals_20171026
+PepsiCo Inc._20170215
+Home Depot_20170516
+train
+Valero Energy_20170425
+Lowe's Cos._20171121
+Hasbro Inc._20170206
+HP Inc._20170222
+Anthem Inc._20170426
+Johnson Controls International_20170727
+Republic Services Inc_20170727
+Genuine Parts_20170221
+Polo Ralph Lauren Corp._20170202
+SunTrust Banks_20171020
+The Hershey Company_20170426
+Agilent Technologies Inc_20170214
+PACCAR Inc._20171024
+Campbell Soup_20170217
+Aon plc_20170509
+Lockheed Martin Corp._20170425
+Hologic_20170201
+Johnson Controls International_20171109
+Red Hat Inc._20171219
+Incyte_20170801
+PG&E Corp._20170727
+Fortive Corp_20170207
+Cisco Systems_20171115
+Cognizant Technology Solutions_20171101
+Aetna Inc_20170131
+Allegion_20170427
+TransDigm Group_20170207
+Oracle Corp._20171214
+General Motors_20170428
+Mylan N.V._20170510
+Juniper Networks_20170425
+Texas Instruments_20170425
+Gilead Sciences_20170502
+PepsiCo Inc._20170711
+Roper Technologies_20170209
+Invesco Ltd._20170727
+Nucor Corp._20170420
+Mastercard Inc._20170727
+Dollar General_20171207
+AmerisourceBergen Corp_20170803
+Allegion_20170209
+Parker-Hannifin_20170427
+Waste Management Inc._20171026
+AES Corp_20171102
+AbbVie Inc._20170728
+Verizon Communications_20170124
+AES Corp_20170508
+Edwards Lifesciences_20170201
+Regions Financial Corp._20171024
+Walgreens Boots Alliance_20170629
+Ecolab Inc._20170502
+Sherwin-Williams_20170420
+Oracle Corp._20170621
+Merck & Co._20170202
+Parker-Hannifin_20171102
+Ulta Beauty_20171130
+General Dynamics_20171025
+Dominion Energy_20170504
+A.O. Smith Corp_20170726
+Micron Technology_20170629
+Foot Locker Inc_20170519
+Cardinal Health Inc._20170501
+Celgene Corp._20170727
+Altria Group Inc_20170502
+Humana Inc._20170802
+The Mosaic Company_20171031
+Allergan, Plc_20170803
+Caterpillar Inc._20171024
+F5 Networks_20170726
+Grainger (W.W.) Inc._20170125
+Digital Realty Trust Inc_20170427
+Starbucks Corp._20170126
+Snap-On Inc._20170202
+Fidelity National Information Services_20170802
+Apache Corporation_20170223
+Booking Holdings Inc_20171106
+Weyerhaeuser_20170428
+Quest Diagnostics_20170725
+Darden Restaurants_20170926
+Micron Technology_20170926
+Lilly (Eli) & Co._20170131
+Baxter International Inc._20170426
+U.S. Bancorp_20170419
+Crown Castle International Corp._20170719
+Schlumberger Ltd._20170721
+Pentair plc_20170725
+General Growth Properties Inc._20170802
+Electronic Arts_20171031
+Align Technology_20170727
+Equinix_20171101
+Illumina Inc_20170131
+PPG Industries_20170119
+TE Connectivity Ltd._20170726
+Lockheed Martin Corp._20171024
+LyondellBasell_20170203
+Lennar Corp._20170620
+Invesco Ltd._20171026
+Mondelez International_20170802
+Coty, Inc_20170209
+Church & Dwight_20171102
+General Mills_20171220
+Advanced Micro Devices Inc_20170501
+Kroger Co._20171130
+NiSource Inc._20170503
+PayPal_20170726
+Texas Instruments_20171024
+Intel Corp._20170727
+McDonald's Corp._20171024
+Welltower Inc._20170505
+Noble Energy Inc_20170803
+Gartner Inc_20170202
+Emerson Electric Company_20170502
+Republic Services Inc_20170216
+Xerox_20170425
+Adobe Systems Inc_20170316
+Alaska Air Group Inc_20170208
+Estee Lauder Cos._20171101
+SunTrust Banks_20170120
+Cboe Global Markets_20170804
+Advanced Micro Devices Inc_20171024
+Valero Energy_20170131
+Estee Lauder Cos._20170503
+American Express Co_20170419
+Martin Marietta Materials_20170502
+Goldman Sachs Group_20170118
+AbbVie Inc._20170427
+Harris Corporation_20170801
+PayPal_20170126
+Merck & Co._20171027
+Sempra Energy_20170509
+ResMed_20170123
+SCANA Corp_20170427
+Lennar Corp._20171003
+Thermo Fisher Scientific_20170426
+Estee Lauder Cos._20170818
+Franklin Resources_20170127
+Twitter, Inc._20170209
+Ingersoll-Rand PLC_20170426
+Polo Ralph Lauren Corp._20171102
+Comcast Corp._20170126
+Equinix_20170802
+Target Corp._20170816
+Sealed Air_20170209
+Pinnacle West Capital_20171103
+Dominion Energy_20171030
+Hess Corporation_20170426
+Nielsen Holdings_20171025
+JPMorgan Chase & Co._20171012
+Fifth Third Bancorp_20170124
+AT&T Inc._20171024
+Aon plc_20171027
+Raytheon Co._20171026
+Iron Mountain Incorporated_20170728
+Caterpillar Inc._20170725
+Coty, Inc_20170822
+Freeport-McMoRan Inc._20170425
+Tractor Supply Company_20170726
+General Motors_20170207
+Prologis_20170718
+Sysco Corp._20170814
+Illinois Tool Works_20171023
+Goodyear Tire & Rubber_20170428
+Celgene Corp._20171026
+Nvidia Corporation_20170509
+Cisco Systems_20170215
+General Dynamics_20170426
+HP Inc._20170524
+Citigroup Inc._20171012
+Sysco Corp._20171106
+American Express Co_20171018
+Foot Locker Inc_20170224
+Ross Stores_20170817
+PPL Corp._20170803
+Pinnacle West Capital_20170803
+United Health Group Inc._20171017
+Iron Mountain Incorporated_20170427
+Norfolk Southern Corp._20171025
+KLA-Tencor Corp._20170727
+Dominion Energy_20170802
+Juniper Networks_20170725
+EQT Corporation_20170727
+Skyworks Solutions_20170119
+CMS Energy_20171026
+Citrix Systems_20170802
+The Clorox Company_20170203
+F5 Networks_20170426
+Franklin Resources_20170428
+Synopsys Inc._20170517
+Nektar Therapeutics_20171107
+Yum! Brands Inc_20170803
+Varian Medical Systems_20171025
+Comcast Corp._20170427
+Iron Mountain Incorporated_20170223
+Microsoft Corp._20170427
+Avery Dennison Corp_20171025
+Lockheed Martin Corp._20170124
+Conagra Brands_20171221
+Seagate Technology_20170725
+AmerisourceBergen Corp_20170131
+BorgWarner_20170727
+Caterpillar Inc._20170126
+
+Test Samples (29)
+
+AmerisourceBergen Corp_20171102
+CBS Corp._20171102
+Chevron Corp._20170127
+CIGNA Corp._20170804
+Dish Network_20170501
+F5 Networks_20170125
+General Growth Properties Inc._20170501
+Hess Corporation_20171025
+Illumina Inc_20171024
+Intel Corp._20171026
+Intuit Inc._20170223
+Kansas City Southern_20170120
+Kellogg Co._20171031
+Kinder Morgan_20170419
+Kroger Co._20170908
+Microsoft Corp._20170126
+Motorola Solutions Inc._20170803
+Nordstrom_20171109
+Quest Diagnostics_20170420
+Red Hat Inc._20170327
+ResMed_20170427
+Rockwell Automation Inc._20170726
+Salesforce.com_20170228
+Sherwin-Williams_20170720
+Stericycle Inc_20171108
+Synopsys Inc._20171129
+United Health Group Inc._20170418
+Xcel Energy Inc_20170727
+Xilinx_20170426
