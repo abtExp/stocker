@@ -31,6 +31,9 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 	if mode == 'train':
 		data_folder = vars.DATA_PATH+'data/train/'
 		batch_size = vars.TRAIN_BATCH_SIZE
+	elif mode == 'valid':
+		data_folder = vars.DATA_PATH+'data/valid/'
+		batch_size = vars.VALID_BATCH_SIZE
 	else:
 		data_folder = vars.DATA_PATH+'data/test/'
 

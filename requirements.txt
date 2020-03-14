@@ -5,3 +5,4 @@ numpy
 librosa
 transformers
 pandas
+nltk
