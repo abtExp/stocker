@@ -47,7 +47,7 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 		tokenizer = prepare_data(vars)
 
 
-	while len(auds) < batch_size:
+	while len(prices) < batch_size:
 		idx = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)[0]
 		folder = all_datas[idx]
 		company, start_date = folder.split('_')

@@ -95,7 +95,10 @@ def dataset_creator(vars):
 def load_target(vars, company, start_date):
 	target = None
 	target_path = vars.DATA_PATH+'targets/'+company+'/daily_prices.csv'
-	all_data = pd.read_csv(target_path)
+	if exists(target_path):
+		all_data = pd.read_csv(target_path)
+	else:
+		target
 
 	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])
 	all_data = all_data.sort_values(by='formatted_date', ascending=True)
