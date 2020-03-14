@@ -46,13 +46,12 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 	if not tokenizer:
 		tokenizer = prepare_data(vars)
 
-	idxs = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)
 
-	for idx in idxs:
+	while len(auds) < batch_size:
+		idx = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)[0]
 		folder = all_datas[idx]
 		company, start_date = folder.split('_')
 
-		text_features = []
 		aud_features = []
 
 		# Loading Text Features
@@ -86,13 +85,15 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 
 		aud_features = np.array(aud_features)
 
-		if len(aud_features) < vars.MAX_SENTENCES:
-			aud_features = np.concatenate((aud_features, np.zeros((vars.MAX_SENTENCES-len(aud_features), *np.shape(aud_features[0])))))
+		if len(aud_features) > 0:
+			if len(aud_features) < vars.MAX_SENTENCES:
+				aud_features = np.concatenate((aud_features, np.zeros((vars.MAX_SENTENCES-len(aud_features), *np.shape(aud_features[0])))))
 
-		auds.append(aud_features)
+			auds.append(aud_features)
 
-		labels = load_target(vars, company, start_date)
+			labels = load_target(vars, company, start_date)
 
-		prices.append(labels)
+			if type(labels) == np.ndarray:
+				prices.append(labels)
 
 	return [np.array(txts), np.array(auds)], np.array(prices)

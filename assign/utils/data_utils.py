@@ -93,7 +93,7 @@ def dataset_creator(vars):
 
 
 def load_target(vars, company, start_date):
-	print(company, start_date)
+	target = None
 	target_path = vars.DATA_PATH+'targets/'+company+'/daily_prices.csv'
 	all_data = pd.read_csv(target_path)
 
@@ -111,8 +111,10 @@ def load_target(vars, company, start_date):
 
 	target = np.array(list(next_thirty_dates['Adj Close']))
 
-	return target
+	if len(target) > 0 and len(target) < vars.NUM_DAYS_PRED:
+		target = np.concatenate((target, np.zeros((vars.NUM_DAYS_PRED - len(target),))))
 
+	return target
 
 def prepare_data(vars):
 	if exists(vars.TOKENIZER_PATH):
