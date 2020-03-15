@@ -11,7 +11,7 @@ class SPEAKER_ENCODER(BASE):
 		super(SPEAKER_ENCODER, self).__init__(vars)
 
 	def compose_model(self):
-		model = load_model(self.vars.PROJECT_PATH+'checkpoints/speaker_encoder.h5')
+		model = load_model(self.vars.PROJECT_PATH+'assign/checkpoints/speaker_encoder.h5')
 
 		with self.graph.as_default():
 			model = Model(inputs=model.input, output=model.layers[-3].output)
