@@ -38,14 +38,14 @@ class MODEL(BASE):
 		# text_encoding
 		text_encoding = REMOVE_DIM()(text)
 		text_encoding = Bidirectional(CuDNNLSTM(units=256, return_sequences=True))(text_encoding)
-		text_encoding = Bidirectional(CuDNNLSTM(units=128, return_sequences=True))(text_encoding)
+		# text_encoding = Bidirectional(CuDNNLSTM(units=128, return_sequences=True))(text_encoding)
 		text_encoding = Attention(self.vars.MAX_SENTENCE_LENGTH)(text_encoding)
 		text_encoding = Dense(512, activation='relu')(text_encoding)
 
 		# speech_encoding
 		speech_encoding = REMOVE_DIM()(speech)
 		speech_encoding = Bidirectional(CuDNNLSTM(units=256, return_sequences=True))(speech_encoding)
-		speech_encoding = Bidirectional(CuDNNLSTM(units=128, return_sequences=True))(speech_encoding)
+		# speech_encoding = Bidirectional(CuDNNLSTM(units=128, return_sequences=True))(speech_encoding)
 		speech_encoding = Attention(self.vars.NUM_SEGMENTS_PER_AUDIO)(speech_encoding)
 		speech_encoding = Dense(512, activation='relu')(speech_encoding)
 
@@ -56,8 +56,8 @@ class MODEL(BASE):
 		layer = GlobalAveragePooling1D()(layer)
 		layer = Dense(256, activation='relu')(layer)
 		layer = Dropout(0.3)(layer)
-		layer = Dense(256, activation='relu')(layer)
-		layer = Dropout(0.3)(layer)
+		# layer = Dense(256, activation='relu')(layer)
+		# layer = Dropout(0.3)(layer)
 		# layer = Dense(256, activation='relu')(layer)
 		layer = Dense(self.vars.NUM_DAYS_PRED)(layer)
 
