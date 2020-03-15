@@ -95,9 +95,10 @@ def dataset_creator(vars):
 def load_target(vars, company, start_date):
 	target = None
 	target_path = vars.DATA_PATH+'targets/'+company+'/daily_prices.csv'
-	if exists(target_path):
+	try:
 		all_data = pd.read_csv(target_path)
-	else:
+	except Exception as e:
+		print('Error reading target : ', e)
 		return target
 
 	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])

@@ -71,7 +71,6 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 		if len(features) < vars.MAX_SENTENCES:
 			features = np.concatenate((features, np.zeros((vars.MAX_SENTENCES-len(features), *np.shape(features[0])))))
 
-		txts.append(features)
 
 		# Loading Audio Features
 		cntr = 0
@@ -89,11 +88,12 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 			if len(aud_features) < vars.MAX_SENTENCES:
 				aud_features = np.concatenate((aud_features, np.zeros((vars.MAX_SENTENCES-len(aud_features), *np.shape(aud_features[0])))))
 
-			auds.append(aud_features)
 
 			labels = load_target(vars, company, start_date)
 
 			if type(labels) == np.ndarray:
+				auds.append(aud_features)
+				txts.append(features)
 				prices.append(labels)
 
 	return [np.array(txts), np.array(auds)], np.array(prices)
