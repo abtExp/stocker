@@ -59,6 +59,18 @@ class Attention(Layer):
 		return input_shape[0],  self.features_dim
 
 
+class EXPAND_DIM(Layer):
+	def __init__(self):
+		super(EXPAND_DIM, self).__init__()
+
+	def call(self, x):
+		out = K.expand_dims(x, axis=0)
+		out._keras_shape = self.compute_output_shape(out.shape)
+		return out
+
+	def compute_output_shape(self, input_shape):
+		return input_shape
+
 class REMOVE_DIM(Layer):
 	def __init__(self):
 		super(REMOVE_DIM, self).__init__()

@@ -77,6 +77,13 @@ where $P_t$ is the closing price on day $t$
 <td>0.217</td>
 </tr>
 <tr>
+<td>Past Volatility</td>
+<td>1.389</td>
+<td>0.517</td>
+<td>0.292</td>
+<td>0.254</td>
+</tr>
+<tr>
 <td>Mine</td>
 <td>TBD</td>
 <td>TBD</td>
