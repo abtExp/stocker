@@ -120,6 +120,44 @@ def load_target(vars, company, start_date):
 
 	return target
 
+
+def get_data_for_volatiles(vars, company, call_date):
+	target = None
+	target_path = vars.DATA_PATH+'volatiles/'+company+'/daily_prices.csv'
+	try:
+		all_data = pd.read_csv(target_path)
+	except Exception as e:
+		print('Error reading target : ', e)
+		return target
+
+	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])
+	all_data = all_data.sort_values(by='formatted_date', ascending=True)
+
+	start_date = '{}-{}-{}'.format(call_date[:4], call_date[4:6], call_date[6:])
+
+	all_dates = list(all_data['formatted_date'])
+	all_dates = [str(i.date()) for i in all_dates]
+
+	start_idx = all_dates.index(start_date)
+
+	volatile_data = {}
+
+	all_periods = [3, 7, 15]
+
+	for period in all_periods:
+		past_data = list(all_data[start_idx-period-1:start_idx]['Adj Close'])
+		next_data = list(all_data[start_idx:start_idx+period+1]['Adj Close'])
+		current = list(all_data[start_idx:start_idx+1]['Adj Close'])
+
+		volatile_data[period] = {
+			'past': past_data,
+			'next': next_data,
+			'curr': current
+		}
+
+	return volatile_data
+
+
 def prepare_data(vars):
 	if exists(vars.TOKENIZER_PATH):
 		with open(vars.TOKENIZER_PATH, 'rb') as f:

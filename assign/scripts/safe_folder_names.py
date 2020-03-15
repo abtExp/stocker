@@ -1,7 +1,7 @@
 import os
 from ..utils.speaker_encoder_preprocess import convert_to_wav
 
-def safe_name(vars):
+def conv_2_wavs(vars):
 	data_path = vars.DATA_PATH+'data'
 	for dir in os.listdir(data_path):
 		for folder in os.listdir(data_path+'/'+dir):
@@ -15,3 +15,6 @@ def safe_name(vars):
 					convert_to_wav(data_path+'/'+dir+'/'+folder+'/Audio/'+file)
 					os.remove(data_path+'/'+dir+'/'+folder+'/Audio/'+file[:file.rindex('.')]+'.mp3')
 
+def safe_name(path):
+	for dr in os.listdir(path):
+		os.rename(path+dr, path+dr.replace(' ', ''))

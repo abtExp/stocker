@@ -73,27 +73,28 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 
 
 		# Loading Audio Features
-		cntr = 0
-		for i in listdir(data_folder+folder+'/Audio/'):
-			aud = load_audio(vars, data_folder+folder+'/Audio/'+i)
-			aud = encoder.predict(aud)
-			aud_features.append(aud)
-			cntr += 1
-			if cntr >= vars.MAX_SENTENCES:
-				break
+		# cntr = 0
+		# for i in listdir(data_folder+folder+'/Audio/'):
+		# 	aud = load_audio(vars, data_folder+folder+'/Audio/'+i)
+		# 	aud = encoder.predict(aud)
+		# 	aud_features.append(aud)
+		# 	cntr += 1
+		# 	if cntr >= vars.MAX_SENTENCES:
+		# 		break
 
-		aud_features = np.array(aud_features)
+		# aud_features = np.array(aud_features)
 
-		if len(aud_features) > 0:
-			if len(aud_features) < vars.MAX_SENTENCES:
-				aud_features = np.concatenate((aud_features, np.zeros((vars.MAX_SENTENCES-len(aud_features), *np.shape(aud_features[0])))))
+		# if len(aud_features) > 0:
+		# 	if len(aud_features) < vars.MAX_SENTENCES:
+		# 		aud_features = np.concatenate((aud_features, np.zeros((vars.MAX_SENTENCES-len(aud_features), *np.shape(aud_features[0])))))
 
 
-			labels = load_target(vars, company, start_date)
+		labels = load_target(vars, company, start_date)
 
-			if type(labels) == np.ndarray:
-				auds.append(aud_features)
-				txts.append(features)
-				prices.append(labels)
+		if type(labels) == np.ndarray:
+			# auds.append(aud_features)
+			txts.append(features)
+			prices.append(labels)
 
-	return [np.array(txts), np.array(auds)], np.array(prices)
+	# return [np.array(txts), np.array(auds)], np.array(prices)
+	return np.array(txts), np.array(prices)
