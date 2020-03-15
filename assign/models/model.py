@@ -54,6 +54,7 @@ class MODEL(BASE):
 		layer = Bidirectional(CuDNNLSTM(128, return_sequences=True))(features)
 		# layer = Bidirectional(CuDNNLSTM(512, return_sequences=True))(features)
 		layer = GlobalAveragePooling1D()(layer)
+		layer = GlobalAveragePooling1D()(layer)
 		layer = Dense(256, activation='relu')(layer)
 		layer = Dropout(0.3)(layer)
 		# layer = Dense(256, activation='relu')(layer)

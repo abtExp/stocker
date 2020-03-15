@@ -64,19 +64,30 @@ def download_csv(vars, comp_code, start_date, end_date):
 
 	return b''
 
+
+
+
 def get_companies_dates(vars):
-	all_comps = listdir(vars.DATA_PATH+'features/')
+	# all_comps = listdir(vars.DATA_PATH+'features/')
+	# all_comps = vars.ALL_COMPS
+	# all_comps = []
+
+	# for i in listdir(vars.DATA_PATH+'data/'):
+	# 	for folder in listdir(vars.DATA_PATH+'data/'+i):
+	# 		all_comps.append(folder)
 
 	comp_info = pd.read_csv(vars.DATA_PATH+'comp_codes.csv')
 
-	comp_date_dict = {}
-	for i in all_comps:
-		comp_name = i[:i.rindex('_')]
-		date = i[i.rindex('_')+1:]
-		if comp_name not in comp_date_dict.keys():
-			comp_date_dict[comp_name] = []
+	# comp_date_dict
+	with open('D:/iiit_assign/comp_with_dates.json', 'r') as f:
+		comp_date_dict = json.load(f)
+	# for i in all_comps:
+	# 	comp_name = i[:i.rindex('_')]
+	# 	date = i[i.rindex('_')+1:]
+	# 	if comp_name not in comp_date_dict.keys():
+	# 		comp_date_dict[comp_name] = []
 
-		comp_date_dict[comp_name].append(date)
+	# 	comp_date_dict[comp_name].append(date)
 
 	comps = np.array(comp_info[['Name', 'Ticker']])
 
@@ -98,16 +109,16 @@ def get_companies_dates(vars):
 			end_date = '{}-{}-{}'.format(dates[-1][:4], dates[-1][4:6], dates[-1][6:])
 
 			start_date = str(int(time.mktime(pd.to_datetime(start_date).timetuple())))
-			end_date = int(time.mktime(pd.to_datetime(end_date).timetuple()))
-			end_date = end_date + int(2678400)
-			end_date = str(end_date)
+			start_date = str(int(start_date) - int(2678400))
+			end_date = time.mktime(pd.to_datetime(end_date).timetuple())
+			end_date = str(int(end_date) + int(2678400))
 
 			data = download_csv(vars, comp_code, start_date, end_date)
 
-			if not isdir(vars.DATA_PATH+'targets/'+comp):
-				mkdir(vars.DATA_PATH+'targets/'+comp)
+			if not isdir(vars.DATA_PATH+'volatiles/'+comp):
+				mkdir(vars.DATA_PATH+'volatiles/'+comp)
 
-			with open(vars.DATA_PATH+'targets/'+comp+'/daily_prices.csv', 'w') as f:
+			with open(vars.DATA_PATH+'volatiles/'+comp+'/daily_prices.csv', 'w') as f:
 				if type(data) != str:
 					f.write(data.decode('utf-8'))
 
