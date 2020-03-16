@@ -83,7 +83,6 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 				cntr += 1
 				if cntr >= vars.MAX_SENTENCES:
 					break
-
 			aud_features = np.array(aud_features)
 
 			if len(aud_features) > 0:
@@ -94,11 +93,30 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 		labels = load_target(vars, company, start_date)
 
 		if type(labels) == np.ndarray:
-			if load_mode == 'audio' or  load_mode == 'both':
-				auds.append(aud_features)
+			is_avail = False
+			is_aud_avail = False
+
+			if load_mode == 'audio' or load_mode == 'both':
+				if len(aud_features) > 0:
+					if load_mode == 'audio':
+						is_avail = True
+					else:
+						is_aud_avail = True
+
+					auds.append(aud_features)
+
 			if load_mode == 'text' or load_mode == 'both':
-				txts.append(features)
-			prices.append(labels)
+				if len(features) > 0:
+					if load_mode == 'both':
+						if is_aud_avail:
+							is_avail = True
+					else:
+						is_avail = True
+
+					xts.append(features)
+
+			if is_avail:
+				prices.append(labels)
 
 	if load_mode == 'audio':
 		return np.expand_dims(auds, axis=-1), np.array(prices)
