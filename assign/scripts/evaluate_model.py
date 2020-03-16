@@ -17,7 +17,7 @@ import json
 from transformers import BertTokenizer
 
 def evaluation_loader(vars, folder, tokenizer, encoder):
-	data_folder = 'D:/iiit_assign/data/text_data/test/'
+	data_folder = vars.PROJECT_PATH+'data/text_data/test/'
 
 	company, start_date = folder.split('_')
 
@@ -84,9 +84,9 @@ def evaluate(vars):
 	encoder = SENTENCE_ENCODER(vars)
 
 	model = TEXT_ENCODER(vars)
-	model.load_weights('D:/iiit_assign/assign/checkpoints/checkpoints_custom_25/weights.02-1450.79.hdf5')
+	model.load_weights(vars.PROJECT_PATH+'assign/checkpoints/checkpoints_custom_25/weights.02-1450.79.hdf5')
 
-	data_folder = 'D:/iiit_assign/data/text_data/test/'
+	data_folder = vars.PROJECT_PATH+'data/text_data/test/'
 
 	all_datas = {}
 

@@ -5,7 +5,7 @@ from keras.callbacks import EarlyStopping, TensorBoard, ReduceLROnPlateau, Model
 PROJECT_PATH = os.path.abspath(__file__)
 PROJECT_PATH = PROJECT_PATH[:PROJECT_PATH.index('assign')].replace('\\', '/')
 
-MODEL_IMAGE_PATH = PROJECT_PATH+'model_images/'
+MODEL_IMAGE_PATH = PROJECT_PATH+'assign/model_images/'
 
 MAX_SENTENCES = 32
 MAX_SENTENCE_LENGTH = 200
@@ -25,16 +25,16 @@ VALID_BATCH_SIZE = 1
 TRAIN_EPOCHS = 10
 STEPS_PER_EPOCH = 100
 
-DATA_PATH = 'D:/iiit_assign/data/'
-EMBEDDING_FILE = PROJECT_PATH+'data/embeddings/glove.840B.300d.txt'
+DATA_PATH = PROJECT_PATH+'data/'
+EMBEDDING_FILE = DATA_PATH+'data/embeddings/glove.840B.300d.txt'
 TOKENIZER_PATH = PROJECT_PATH+'assign/checkpoints/tokenizer.pickle'
 
 YAHOO_DOWNLOAD_FINLINK = 'https://query1.finance.yahoo.com/v7/finance/download/{}?period1={}&period2={}&interval=1d&events=history&crumb={}'
 YAHOO_FINLINK = 'https://finance.yahoo.com/quote/{}/history?p={}'
 
 def get_callbacks(model='custom'):
-	all_checks = os.listdir('D:/iiit_assign/assign/checkpoints/')
-	all_logs = os.listdir('D:/iiit_assign/assign/logs/')
+	all_checks = os.listdir(PROJECT_PATH+'assign/checkpoints/')
+	all_logs = os.listdir(PROJECT_PATH+'assign/logs/')
 	counter = 0
 	max = -1
 
@@ -44,8 +44,8 @@ def get_callbacks(model='custom'):
 							max = int(folder[folder.rindex('_')+1:])
 
 	counter = max+1
-	check_path = 'D:/iiit_assign/assign/checkpoints/checkpoints_{}_{}/'.format(model, counter)
-	logs_path = 'D:/iiit_assign/assign/logs/logs_{}_{}/'.format(model, counter)
+	check_path = PROJECT_PATH+'assign/checkpoints/checkpoints_{}_{}/'.format(model, counter)
+	logs_path = PROJECT_PATH+'assign/logs/logs_{}_{}/'.format(model, counter)
 
 	if not os.path.isdir(check_path) and not os.path.isdir(logs_path):
 			os.mkdir(check_path)
