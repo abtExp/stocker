@@ -21,8 +21,8 @@ class BASE():
 		self.model.load_weights(self.vars.BEST_WEIGHT_PATH)
 
 	def init_loaders(self):
-		self.train_loader = self.DATA_LOADER(self.vars, 'train', loader=self.data_feeder, graph=self.graph)
-		self.valid_loader = self.DATA_LOADER(self.vars, 'valid', loader=self.data_feeder, graph=self.graph)
+		self.train_loader = self.DATA_LOADER(self.vars, 'train', loader=self.data_feeder, graph=self.graph, load_mode=self.load_mode)
+		self.valid_loader = self.DATA_LOADER(self.vars, 'valid', loader=self.data_feeder, graph=self.graph, load_mode=self.load_mode)
 
 	def summary(self):
 		self.model.summary()

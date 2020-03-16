@@ -27,27 +27,23 @@ from ..models.sentence_encoder import SENTENCE_ENCODER
 
 
 def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, load_mode='text'):
-	data_folder = ''
+	data_folder = vars.DATA_PATH+'data'
 	batch_size = 0
 
 	if mode == 'train':
-		data_folder = vars.DATA_PATH+'text_data/train/'
+		data_folder = data_folder+'/train/'
 		batch_size = vars.TRAIN_BATCH_SIZE
 	elif mode == 'valid':
-		data_folder = vars.DATA_PATH+'text_data/valid/'
+		data_folder = data_folder+'/valid/'
 		batch_size = vars.VALID_BATCH_SIZE
 	else:
-		data_folder = vars.DATA_PATH+'text_data/test/'
+		data_folder = data_folder+'/test/'
 
 	txts = []
 	auds = []
 	prices = []
 
 	all_datas = listdir(data_folder)
-
-	if not tokenizer:
-		tokenizer = prepare_data(vars)
-
 
 	while len(prices) < batch_size:
 		idx = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)[0]
@@ -105,7 +101,7 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 			prices.append(labels)
 
 	if load_mode == 'audio':
-		return np.array(auds), np.array(prices)
+		return np.expand_dims(auds, axis=-1), np.array(prices)
 	elif load_mode == 'text':
 		return np.array(txts), np.array(prices)
 	else:
