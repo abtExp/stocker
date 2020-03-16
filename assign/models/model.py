@@ -12,7 +12,11 @@ from keras.models import Model
 from keras.optimizers import Adam
 
 import tensorflow as tf
+import keras
 
+gpu_options = tf.GPUOptions(allow_growth=True)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+keras.backend.tensorflow_backend.set_session(sess)
 
 class MODEL(BASE):
 	def __init__(self, vars, model='assign'):
