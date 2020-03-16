@@ -16,10 +16,12 @@ class DATA_LOADER(Sequence):
 		self.tokenizer = None
 		self.text_encoder = None
 
+		print('LOAD MODE : ', self.load_mode)
+
 		if self.load_mode == 'text' or self.load_mode == 'both':
 			self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 			self.text_encoder = SENTENCE_ENCODER(vars)
-		elif self.load_mode == 'audio' or self.load_mode == 'both':
+		if self.load_mode == 'audio' or self.load_mode == 'both':
 			self.speech_encoder = SPEAKER_ENCODER(self.vars, graph=self.graph)
 
 	def __getitem__(self, index):

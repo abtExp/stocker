@@ -105,4 +105,4 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 	elif load_mode == 'text':
 		return np.array(txts), np.array(prices)
 	else:
-		return [np.array(txts), np.array(auds)], np.array(prices)
+		return [np.array(txts), np.expand_dims(auds, axis=-1)], np.array(prices)
