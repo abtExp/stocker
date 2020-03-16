@@ -18,8 +18,8 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 tx, ty = data_loader(vars, encoder=speaker_encoder, tokenizer=tokenizer, model=model)
 
-print(tx[0].shape)
-print(tx[1].shape)
+print(tx.shape)
+# print(tx[1].shape)
 print(ty.shape)
 
 # print(txt_encoder.summary())

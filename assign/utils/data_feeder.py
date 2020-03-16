@@ -23,6 +23,8 @@ from sklearn.model_selection import train_test_split
 
 from ..utils.data_utils import *
 
+from ..models.sentence_encoder import SENTENCE_ENCODER
+
 
 def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 	data_folder = ''
@@ -62,8 +64,9 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None):
 			features = []
 			for sentence in sentences:
 				tokens = tokenizer.encode(sentence, max_length=vars.MAX_SENTENCE_LENGTH, pad_to_max_length=True)
-				tokens = torch.tensor([tokens])
-				outputs = model(tokens)[0][0].detach().numpy()
+				# tokens = torch.tensor([tokens])
+				outputs = model.predict(np.array([tokens], dtype=np.long))
+				# return
 				features.append(outputs)
 
 		features = np.array(features)

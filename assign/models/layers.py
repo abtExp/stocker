@@ -64,12 +64,14 @@ class EXPAND_DIM(Layer):
 		super(EXPAND_DIM, self).__init__()
 
 	def call(self, x):
-		out = K.expand_dims(x, axis=0)
+		out = x
+		out = K.expand_dims(out, axis=0)
 		out._keras_shape = self.compute_output_shape(out.shape)
 		return out
 
 	def compute_output_shape(self, input_shape):
-		return input_shape
+		output_shape = (1,)+tuple([int(i) for i in input_shape])
+		return output_shape
 
 class REMOVE_DIM(Layer):
 	def __init__(self):
