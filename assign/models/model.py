@@ -24,6 +24,7 @@ class MODEL(BASE):
 		self.inp_shape = (vars.MAX_SENTENCES,)
 		self.speech_encoder = SPEECH_ENCODER(vars).model
 		self.text_encoder = TEXT_ENCODER(vars).model
+		self.load_mode = 'both'
 
 		super(MODEL, self).__init__(vars)
 

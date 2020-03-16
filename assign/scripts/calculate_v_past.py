@@ -26,7 +26,7 @@ def calc_mse(x, y):
 
 def calc_v_past(vars):
 	vpast_comps = {}
-	with open('D:/iiit_assign/comp_with_dates.json', 'r') as f:
+	with open(vars.PROJECT_PATH+'comp_with_dates.json', 'r') as f:
 		all_comps = json.load(f)
 
 	all_datas = {}
@@ -36,7 +36,7 @@ def calc_v_past(vars):
 		for call in all_comps[comp]:
 			data = get_data_for_volatiles(vars, comp.replace(' ', ''), call)
 			if data is not None:
-				with open('D:/iiit_assign/datas/{}_{}.json'.format(comp.replace(' ', ''), call), 'w') as f:
+				with open(vars.PROJECT_PATH+'datas/{}_{}.json'.format(comp.replace(' ', ''), call), 'w') as f:
 					json.dump(data, f)
 				days = {}
 				for period in data.keys():
