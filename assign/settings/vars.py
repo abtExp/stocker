@@ -25,7 +25,7 @@ VALID_BATCH_SIZE = 1
 TRAIN_EPOCHS = 10
 STEPS_PER_EPOCH = 100
 
-DATA_PATH = PROJECT_PATH+'data/'
+DATA_PATH = 'D:/iiit_assign/data/'
 EMBEDDING_FILE = PROJECT_PATH+'data/embeddings/glove.840B.300d.txt'
 TOKENIZER_PATH = PROJECT_PATH+'assign/checkpoints/tokenizer.pickle'
 
@@ -33,8 +33,8 @@ YAHOO_DOWNLOAD_FINLINK = 'https://query1.finance.yahoo.com/v7/finance/download/{
 YAHOO_FINLINK = 'https://finance.yahoo.com/quote/{}/history?p={}'
 
 def get_callbacks(model='custom'):
-	all_checks = os.listdir(PROJECT_PATH+'assign/checkpoints/')
-	all_logs = os.listdir(PROJECT_PATH+'assign/logs/')
+	all_checks = os.listdir('D:/iiit_assign/assign/checkpoints/')
+	all_logs = os.listdir('D:/iiit_assign/assign/logs/')
 	counter = 0
 	max = -1
 
@@ -44,18 +44,18 @@ def get_callbacks(model='custom'):
 							max = int(folder[folder.rindex('_')+1:])
 
 	counter = max+1
-	check_path = PROJECT_PATH+'assign/checkpoints/checkpoints_{}_{}/'.format(model, counter)
-	logs_path = PROJECT_PATH+'assign/logs/logs_{}_{}/'.format(model, counter)
+	check_path = 'D:/iiit_assign/assign/checkpoints/checkpoints_{}_{}/'.format(model, counter)
+	logs_path = 'D:/iiit_assign/assign/logs/logs_{}_{}/'.format(model, counter)
 
 	if not os.path.isdir(check_path) and not os.path.isdir(logs_path):
 			os.mkdir(check_path)
 			os.mkdir(logs_path)
 
 
-	checkpoint = ModelCheckpoint(check_path+'weights.{epoch:02d}-{loss:.2f}.hdf5', monitor='loss', verbose=0, save_best_only=True, save_weights_only=True)
-	earlystop = EarlyStopping(monitor='loss', min_delta=0, patience=3, verbose=0)
+	checkpoint = ModelCheckpoint(check_path+'weights.{epoch:02d}-{val_loss:.2f}.hdf5', monitor='val_loss', verbose=0, save_best_only=True, save_weights_only=True)
+	earlystop = EarlyStopping(monitor='val_loss', min_delta=0, patience=3, verbose=0)
 	tensorboard = TensorBoard(log_dir=logs_path, histogram_freq=0, batch_size=32, write_graph=True, write_grads=True, write_images=True)
-	reducelr = ReduceLROnPlateau(monitor='loss', factor=0.02, patience=1, verbose=0, mode='auto', min_delta=0.0001, cooldown=0, min_lr=0)
+	reducelr = ReduceLROnPlateau(monitor='val_loss', factor=0.02, patience=1, verbose=0, mode='auto', min_delta=0.0001, cooldown=0, min_lr=0)
 
 	return [checkpoint, tensorboard, reducelr, earlystop]
 

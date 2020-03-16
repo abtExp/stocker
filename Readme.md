@@ -84,6 +84,20 @@ where $P_t$ is the closing price on day $t$
 <td>0.254</td>
 </tr>
 <tr>
+<td>Text only</td>
+<td>3.407</td>
+<td>0.449</td>
+<td>0.381</td>
+<td>0.548</td>
+</tr>
+<tr>
+<td>Audio only</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr>
 <td>Mine</td>
 <td>TBD</td>
 <td>TBD</td>
