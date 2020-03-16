@@ -28,7 +28,7 @@ class BASE():
 		self.model.summary()
 
 	def plot(self):
-		plot_model(self.model, self.vars.MODEL_IMAGE_PATH, show_shapes=True)
+		plot_model(self.model, 'D:/iiit_assign/assign/model_images/', show_shapes=True)
 
 	def predict(self, data):
 		# with tf.Session().as_default():

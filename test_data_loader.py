@@ -13,10 +13,10 @@ speaker_encoder = SPEAKER_ENCODER(vars, graph=tf.get_default_graph())
 # speech_encoder = SPEECH_ENCODER(vars)
 
 
-model = BertModel.from_pretrained('bert-base-uncased')
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# model = BertModel.from_pretrained('bert-base-uncased')
+# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
-tx, ty = data_loader(vars, encoder=speaker_encoder, tokenizer=tokenizer, model=model)
+tx, ty = data_loader(vars, encoder=speaker_encoder, load_mode='audio')
 
 print(tx.shape)
 # print(tx[1].shape)

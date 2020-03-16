@@ -27,10 +27,10 @@ class SPEECH_ENCODER(BASE):
 		super(SPEECH_ENCODER, self).__init__(vars)
 
 	def compose_model(self):
-		inp = Input(batch_shape=(1, self.vars.MAX_SENTENCES, self.vars.NUM_SEGMENTS_PER_AUDIO, self.vars.AUDIO_EMBEDDING_SIZE, 1))
+		inp = Input(shape=(self.vars.MAX_SENTENCES, self.vars.NUM_SEGMENTS_PER_AUDIO, self.vars.AUDIO_EMBEDDING_SIZE, 1))
 		layer = ConvLSTM2D(filters=64, kernel_size=(3, 3), activation='relu', return_sequences=True)(inp)
-		layer = ConvLSTM2D(filters=128, kernel_size=(3, 3), activation='relu', return_sequences=True)(layer)
-		layer = ConvLSTM2D(filters=256, kernel_size=(1, 1), activation='relu')(layer)
+		layer = ConvLSTM2D(filters=64, kernel_size=(3, 3), activation='relu', return_sequences=True)(layer)
+		layer = ConvLSTM2D(filters=128, kernel_size=(1, 1), activation='relu')(layer)
 		layer = GlobalAveragePooling2D()(layer)
 		# layer = Bidirectional(CuDNNLSTM(units=128, return_sequences=True))(layer)
 		# layer = Attention(self.vars.MAX_SENTENCE_LENGTH)(layer)
