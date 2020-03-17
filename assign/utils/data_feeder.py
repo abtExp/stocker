@@ -113,7 +113,7 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 					else:
 						is_avail = True
 
-					xts.append(features)
+					txts.append(features)
 
 			if is_avail:
 				prices.append(labels)

@@ -42,8 +42,8 @@ class MODEL(BASE):
 		speech = Input(shape=(self.vars.MAX_SENTENCES, self.vars.NUM_SEGMENTS_PER_AUDIO, self.vars.AUDIO_EMBEDDING_SIZE, 1))
 
 		# text_encoding
-		text_encoding = Bidirectional(CuDNNLSTM(units=512, return_sequences=True))(text)
-		text_encoding = Bidirectional(CuDNNLSTM(units=256, return_sequences=True))(text_encoding)
+		text_encoding = Bidirectional(CuDNNLSTM(units=256, return_sequences=True))(text)
+		text_encoding = Bidirectional(CuDNNLSTM(units=128, return_sequences=True))(text_encoding)
 		text_encoding = GlobalAveragePooling1D()(text_encoding)
 		text_encoding = Dense(256, activation='relu')(text_encoding)
 
