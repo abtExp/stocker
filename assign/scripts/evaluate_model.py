@@ -1,8 +1,8 @@
 from .calculate_v_past import calc_volatility, calc_mse
 from ..settings import vars
-from ..models import TEXT_ENCODER, SENTENCE_ENCODER
+from ..models import TEXT_ENCODER, SENTENCE_ENCODER, SPEECH_ENCODER, SPEAKER_ENCODER
 
-from ..utils.data_utils import load_target
+from ..utils.data_feeder import data_loader
 
 import math
 
@@ -16,83 +16,29 @@ import json
 
 from transformers import BertTokenizer
 
-def evaluation_loader(vars, folder, tokenizer, encoder):
-	data_folder = vars.PROJECT_PATH+'data/text_data/test/'
-
-	company, start_date = folder.split('_')
-
-	aud_features = []
-
-	auds = []
-	txts = []
-	prices = []
-
-	# Loading Text Features
-	with open(data_folder+folder+'/Text.txt') as f:
-		print('READING : {}'.format(data_folder+folder+'/Text.txt'))
-		try:
-			sentences = f.read()
-		except Exception as e:
-			print('Can\'t read! : ', e)
-			return np.array(txts), np.array(prices)
-		sentences = sentences.split('\n')
-		sentences = sentences[:vars.MAX_SENTENCES]
-		features = []
-		for sentence in sentences:
-			tokens = tokenizer.encode(sentence, max_length=vars.MAX_SENTENCE_LENGTH, pad_to_max_length=True)
-			# tokens = torch.tensor([tokens])
-			outputs = encoder.predict(np.array([tokens], dtype=np.long))
-			# return
-			features.append(outputs)
-
-	features = np.array(features)
-
-	if len(features) < vars.MAX_SENTENCES:
-		features = np.concatenate((features, np.zeros((vars.MAX_SENTENCES-len(features), *np.shape(features[0])))))
+import tensorflow as tf
 
 
-	# Loading Audio Features
-	# cntr = 0
-	# for i in listdir(data_folder+folder+'/Audio/'):
-	# 	aud = load_audio(vars, data_folder+folder+'/Audio/'+i)
-	# 	aud = encoder.predict(aud)
-	# 	aud_features.append(aud)
-	# 	cntr += 1
-	# 	if cntr >= vars.MAX_SENTENCES:
-	# 		break
+def evaluate(vars, eval_model='text_model'):
+	tokenizer = None
+	text_encoder = None
+	audio_encoder = None
+	if eval_model == 'text_model' or eval_model == 'both_model':
+		tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+		text_encoder = SENTENCE_ENCODER(vars)
+		model = TEXT_ENCODER(vars)
+	if eval_model == 'audio_model' or eval_model == 'both_model':
+		audio_encoder = SPEAKER_ENCODER(vars, graph=tf.get_default_graph())
+		model = SPEECH_ENCODER(vars)
 
-	# aud_features = np.array(aud_features)
+	model.load_weights(vars.CHECK_PATH+eval_model+'/'+listdir(vars.CHECK_PATH+eval_model)[-1])
 
-	# if len(aud_features) > 0:
-	# 	if len(aud_features) < vars.MAX_SENTENCES:
-	# 		aud_features = np.concatenate((aud_features, np.zeros((vars.MAX_SENTENCES-len(aud_features), *np.shape(aud_features[0])))))
-
-
-	labels = load_target(vars, company, start_date)
-
-	if type(labels) == np.ndarray:
-		# auds.append(aud_features)
-		txts.append(features)
-		prices.append(labels)
-
-	# return [np.array(txts), np.array(auds)], np.array(prices)
-	return np.array(txts), np.array(prices)
-
-
-def evaluate(vars):
-	tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-	encoder = SENTENCE_ENCODER(vars)
-
-	model = TEXT_ENCODER(vars)
-	model.load_weights(vars.PROJECT_PATH+'assign/checkpoints/checkpoints_custom_25/weights.02-1450.79.hdf5')
-
-	data_folder = vars.PROJECT_PATH+'data/text_data/test/'
+	data_folder = vars.DATA_PATH+'data/test/'
 
 	all_datas = {}
 
 	for folder in listdir(data_folder):
-		if exists(data_folder+folder+'/Text.txt'):
-			tx, ty = evaluation_loader(vars, folder, tokenizer, encoder)
+			tx, ty = data_loader(vars, mode='test', folder=folder, encoder=audio_encoder, tokenizer=tokenizer, model=text_encoder, load_mode=eval_model[:eval_model.rindex('_')])
 
 			if len(tx.shape) > 1:
 				print('Evaluating...')
@@ -119,7 +65,6 @@ def evaluate(vars):
 						else:
 							all_datas[period].append(mse)
 
-	print(all_datas)
 
 	with open('./eval.json', 'w') as f:
 		json.dump(all_datas, f)

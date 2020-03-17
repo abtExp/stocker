@@ -26,7 +26,7 @@ from ..utils.data_utils import *
 from ..models.sentence_encoder import SENTENCE_ENCODER
 
 
-def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, load_mode='text'):
+def data_loader(vars, mode='train', folder='', encoder=None, tokenizer=None, model=None, load_mode='text'):
 	data_folder = vars.DATA_PATH+'data'
 	batch_size = 0
 
@@ -38,6 +38,7 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 		batch_size = vars.VALID_BATCH_SIZE
 	else:
 		data_folder = data_folder+'/test/'
+		batch_size = 1
 
 	txts = []
 	auds = []
@@ -46,8 +47,10 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 	all_datas = listdir(data_folder)
 
 	while len(prices) < batch_size:
-		idx = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)[0]
-		folder = all_datas[idx]
+		if len(folder) == 0:
+			idx = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)[0]
+			folder = all_datas[idx]
+
 		company, start_date = folder.split('_')
 
 		if load_mode == 'audio' or load_mode == 'both':
@@ -56,20 +59,25 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 		# Loading Text Features
 		if load_mode == 'text' or load_mode == 'both':
 			with open(data_folder+folder+'/Text.txt') as f:
-				sentences = f.read()
-				sentences = sentences.split('\n')
-				sentences = sentences[:vars.MAX_SENTENCES]
-				features = []
-				for sentence in sentences:
-					tokens = tokenizer.encode(sentence, max_length=vars.MAX_SENTENCE_LENGTH, pad_to_max_length=True)
-					# tokens = torch.tensor([tokens])
-					outputs = model.predict(np.array([tokens], dtype=np.long))
-					# return
-					features.append(outputs)
+				try:
+					sentences = f.read()
+					sentences = sentences.split('\n')
+					sentences = sentences[:vars.MAX_SENTENCES]
+					features = []
+					for sentence in sentences:
+						tokens = tokenizer.encode(sentence, max_length=vars.MAX_SENTENCE_LENGTH, pad_to_max_length=True)
+						# tokens = torch.tensor([tokens])
+						outputs = model.predict(np.array([tokens], dtype=np.long))
+						# return
+						features.append(outputs)
+
+				except Exception as e:
+					print('Can\'t read! : ', e)
+					features = []
 
 			features = np.array(features)
 
-			if len(features) < vars.MAX_SENTENCES:
+			if len(features) < vars.MAX_SENTENCES and len(features) > 0:
 				features = np.concatenate((features, np.zeros((vars.MAX_SENTENCES-len(features), *np.shape(features[0])))))
 
 
@@ -117,6 +125,12 @@ def data_loader(vars, mode='train', encoder=None, tokenizer=None, model=None, lo
 
 			if is_avail:
 				prices.append(labels)
+			else:
+				if mode == 'test':
+					return np.array([]), []
+		else:
+			if mode == 'test':
+				return np.array([]), []
 
 	if load_mode == 'audio':
 		return np.expand_dims(auds, axis=-1), np.array(prices)

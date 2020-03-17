@@ -92,13 +92,13 @@ where $P_t$ is the closing price on day $t$
 </tr>
 <tr>
 <td>Audio only</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>TBD</td>
-<td>TBD</td>
+<td>4.389</td>
+<td>9.138</td>
+<td>11.242</td>
+<td>12.256</td>
 </tr>
 <tr>
-<td>Mine</td>
+<td>Multimodal</td>
 <td>TBD</td>
 <td>TBD</td>
 <td>TBD</td>

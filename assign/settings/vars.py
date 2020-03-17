@@ -6,8 +6,10 @@ PROJECT_PATH = os.path.abspath(__file__)
 PROJECT_PATH = PROJECT_PATH[:PROJECT_PATH.index('assign')].replace('\\', '/')
 
 MODEL_IMAGE_PATH = PROJECT_PATH+'assign/model_images/'
+CHECK_PATH = PROJECT_PATH+'assign/checkpoints/'
+LOG_PATH = PROJECT_PATH+'assign/logs/'
 
-MAX_SENTENCES = 8
+MAX_SENTENCES = 50
 MAX_SENTENCE_LENGTH = 200
 MAX_SEGMENT_LENGTH = 2.5
 MAX_AUDIO_DURATION = 15.0
@@ -33,8 +35,7 @@ YAHOO_DOWNLOAD_FINLINK = 'https://query1.finance.yahoo.com/v7/finance/download/{
 YAHOO_FINLINK = 'https://finance.yahoo.com/quote/{}/history?p={}'
 
 def get_callbacks(model='custom'):
-	all_checks = os.listdir(PROJECT_PATH+'assign/checkpoints/')
-	all_logs = os.listdir(PROJECT_PATH+'assign/logs/')
+	all_checks = os.listdir(CHECK_PATH)
 	counter = 0
 	max = -1
 
@@ -44,8 +45,8 @@ def get_callbacks(model='custom'):
 							max = int(folder[folder.rindex('_')+1:])
 
 	counter = max+1
-	check_path = PROJECT_PATH+'assign/checkpoints/checkpoints_{}_{}/'.format(model, counter)
-	logs_path = PROJECT_PATH+'assign/logs/logs_{}_{}/'.format(model, counter)
+	check_path = CHECK_PATH+'checkpoints_{}_{}/'.format(model, counter)
+	logs_path = LOG_PATH+'logs_{}_{}/'.format(model, counter)
 
 	if not os.path.isdir(check_path) and not os.path.isdir(logs_path):
 			os.mkdir(check_path)
