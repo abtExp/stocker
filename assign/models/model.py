@@ -7,10 +7,10 @@ from ..utils.data_utils import get_embeddings, prepare_data
 from ..utils.data_loader import DATA_LOADER
 from ..utils.data_feeder import data_loader
 
-from keras.layers import Input, Dense, Dropout, CuDNNLSTM, Bidirectional,\
+from tensorflow.keras.layers import Input, Dense, Dropout, CuDNNLSTM, Bidirectional,\
 	Concatenate, Reshape, GlobalAveragePooling2D, ConvLSTM2D, GlobalAveragePooling1D
-from keras.models import Model
-from keras.optimizers import Adam
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
 
 import tensorflow as tf
 import keras
@@ -23,8 +23,8 @@ class MODEL(BASE):
 	def __init__(self, vars, model='assign'):
 		self.model_name = model
 		self.inp_shape = (vars.MAX_SENTENCES,)
-		self.speech_encoder = SPEECH_ENCODER(vars).model
-		self.text_encoder = TEXT_ENCODER(vars).model
+		# self.speech_encoder = SPEECH_ENCODER(vars).model
+		# self.text_encoder = TEXT_ENCODER(vars).model
 		self.load_mode = 'both'
 
 		super(MODEL, self).__init__(vars)
@@ -73,7 +73,7 @@ class MODEL(BASE):
 		layer = Bidirectional(CuDNNLSTM(128, return_sequences=True))(features)
 		layer = GlobalAveragePooling1D()(layer)
 		layer = Dense(256, activation='relu')(layer)
-		layer = Dropout(0.3)(layer)
+		# layer = Dropout(0.3)(layer)
 		layer = Dense(self.vars.NUM_DAYS_PRED)(layer)
 
 		model = Model(inputs=[text, speech], outputs=layer)
@@ -81,3 +81,15 @@ class MODEL(BASE):
 		model.compile(loss='mean_squared_error', optimizer=Adam())
 
 		return model
+
+	def tf_model(self):
+		self.model = tf.keras.estimator.model_to_estimator(keras_model=self.model, model_dir=self.vars.CHECK_PATH)
+
+	def tf_init_loaders(self):
+		return
+
+	def tf_train_and_eval(self):
+		return
+
+	def tf_predict(self, x):
+		return

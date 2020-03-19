@@ -99,7 +99,7 @@ def load_target(vars, company, start_date):
 		all_data = pd.read_csv(target_path)
 	except Exception as e:
 		print('Error reading target : ', e)
-		return target
+		return target, e
 
 	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])
 	all_data = all_data.sort_values(by='formatted_date', ascending=True)

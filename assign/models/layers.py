@@ -1,7 +1,7 @@
-import keras.backend as K
-from keras import initializers
+import tensorflow.keras.backend as K
+from tensorflow.keras import initializers
 
-from keras.layers import Layer
+from tensorflow.keras.layers import Layer
 import numpy as np
 
 class Attention(Layer):

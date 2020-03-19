@@ -1,5 +1,5 @@
 from assign import vars
-from assign.models import TEXT_ENCODER, SPEAKER_ENCODER, SPEECH_ENCODER
+from assign.models import SPEAKER_ENCODER, SENTENCE_ENCODER
 from assign.utils.data_feeder import data_loader
 
 from transformers import BertModel, BertTokenizer
@@ -8,25 +8,32 @@ import numpy as np
 
 import tensorflow as tf
 
-speaker_encoder = SPEAKER_ENCODER(vars, graph=tf.get_default_graph())
-# txt_encoder = TEXT_ENCODER(vars)
-# speech_encoder = SPEECH_ENCODER(vars)
+from argparse import ArgumentParser
 
 
-# model = BertModel.from_pretrained('bert-base-uncased')
-# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+if __name__ == "__main__":
+	parser = ArgumentParser()
+	parser.add_argument('mode', help='modality')
 
-tx, ty = data_loader(vars, encoder=speaker_encoder, load_mode='audio')
+	args = parser.parse_args()
 
-print(tx.shape)
-# print(tx[1].shape)
-print(ty.shape)
+	tokenizer = None
+	text_encoder = None
+	speech_encoder = None
 
-# print(txt_encoder.summary())
-# pred = txt_encoder.predict(txt[0])
+	if args.mode == 'text' or args.mode == 'both':
+		text_encoder = SENTENCE_ENCODER(vars)
+		tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
-# print(speech_encoder.summary())
-# aud_pred = speech_encoder.predict(voi[0])
+	if args.mode == 'audio' or args.mode == 'both':
+		speech_encoder = SPEAKER_ENCODER(vars, graph=tf.get_default_graph())
 
-# print(pred.shape)
-# print(aud_pred.shape)
+	tx, ty, _ = data_loader(vars, encoder=speech_encoder, tokenizer=tokenizer, model=text_encoder, load_mode=args.mode)
+
+	if args.mode != 'both':
+		print(tx.shape)
+	else:
+		print(tx[0].shape)
+		print(tx[1].shape)
+
+	print(ty.shape)
