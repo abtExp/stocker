@@ -98,7 +98,7 @@ def load_target(vars, company, start_date):
 	try:
 		all_data = pd.read_csv(target_path)
 	except Exception as e:
-		print('Error reading target : ', e)
+		# print('Error reading target : ', e)
 		return target, e
 
 	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])
@@ -118,7 +118,7 @@ def load_target(vars, company, start_date):
 	if len(target) > 0 and len(target) < vars.NUM_DAYS_PRED:
 		target = np.concatenate((target, np.zeros((vars.NUM_DAYS_PRED - len(target),))))
 
-	return target
+	return target, ''
 
 
 def get_data_for_volatiles(vars, company, call_date):
@@ -127,7 +127,7 @@ def get_data_for_volatiles(vars, company, call_date):
 	try:
 		all_data = pd.read_csv(target_path)
 	except Exception as e:
-		print('Error reading target : ', e)
+		# print('Error reading target : ', e)
 		return target
 
 	all_data['formatted_date'] = pd.to_datetime(all_data['Date'])

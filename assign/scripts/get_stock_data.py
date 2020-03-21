@@ -68,26 +68,11 @@ def download_csv(vars, comp_code, start_date, end_date):
 
 
 def get_companies_dates(vars):
-	# all_comps = listdir(vars.DATA_PATH+'features/')
-	# all_comps = vars.ALL_COMPS
-	# all_comps = []
-
-	# for i in listdir(vars.DATA_PATH+'data/'):
-	# 	for folder in listdir(vars.DATA_PATH+'data/'+i):
-	# 		all_comps.append(folder)
-
 	comp_info = pd.read_csv(vars.DATA_PATH+'comp_codes.csv')
 
 	# comp_date_dict
-	with open('D:/iiit_assign/comp_with_dates.json', 'r') as f:
+	with open('D:/iiit_assign/comp_with_dates.json', 'r', encoding='utf-8') as f:
 		comp_date_dict = json.load(f)
-	# for i in all_comps:
-	# 	comp_name = i[:i.rindex('_')]
-	# 	date = i[i.rindex('_')+1:]
-	# 	if comp_name not in comp_date_dict.keys():
-	# 		comp_date_dict[comp_name] = []
-
-	# 	comp_date_dict[comp_name].append(date)
 
 	comps = np.array(comp_info[['Name', 'Ticker']])
 

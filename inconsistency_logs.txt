@@ -1,0 +1,41 @@
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/SchlumbergerLtd/daily_prices.csv' does not exist: b'D:/stocker/data/targets/SchlumbergerLtd/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/SchlumbergerLtd/daily_prices.csv' does not exist: b'D:/stocker/data/targets/SchlumbergerLtd/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Can't read! :  'charmap' codec can't decode byte 0x9d in position 12095: character maps to <undefined>
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/TapestryInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/TapestryInc/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/UnitedHealthGroupInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/UnitedHealthGroupInc/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/UnitedHealthGroupInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/UnitedHealthGroupInc/daily_prices.csv'
+
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/Walmart/daily_prices.csv' does not exist: b'D:/stocker/data/targets/Walmart/daily_prices.csv'
+
+Error reading target :  No columns to parse from file
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/AmericanTowerCorpA/daily_prices.csv' does not exist: b'D:/stocker/data/targets/AmericanTowerCorpA/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/AmericanTowerCorpA/daily_prices.csv' does not exist: b'D:/stocker/data/targets/AmericanTowerCorpA/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/AmericanTowerCorpA/daily_prices.csv' does not exist: b'D:/stocker/data/targets/AmericanTowerCorpA/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/AOSmithCorp/daily_prices.csv' does not exist: b'D:/stocker/data/targets/AOSmithCorp/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/BookingHoldingsInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/BookingHoldingsInc/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/BookingHoldingsInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/BookingHoldingsInc/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/CboeGlobalMarkets/daily_prices.csv' does not exist: b'D:/stocker/data/targets/CboeGlobalMarkets/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/DRHorton/daily_prices.csv' does not exist: b'D:/stocker/data/targets/DRHorton/daily_prices.csv'
+Error reading target :  [Errno 2] File b"D:/stocker/data/targets/EdisonInt'l/daily_prices.csv" does not exist: b"D:/stocker/data/targets/EdisonInt'l/daily_prices.csv"
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/EmersonElectricCompany/daily_prices.csv' does not exist: b'D:/stocker/data/targets/EmersonElectricCompany/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/EmersonElectricCompany/daily_prices.csv' does not exist: b'D:/stocker/data/targets/EmersonElectricCompany/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/FortiveCorp/daily_prices.csv' does not exist: b'D:/stocker/data/targets/FortiveCorp/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/GeneralGrowthPropertiesInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/GeneralGrowthPropertiesInc/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/GeneralGrowthPropertiesInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/GeneralGrowthPropertiesInc/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/HCAHoldings/daily_prices.csv' does not exist: b'D:/stocker/data/targets/HCAHoldings/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Can't read! :  'charmap' codec can't decode byte 0x9d in position 9071: character maps to <undefined>
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/Lilly(Eli)&Co/daily_prices.csv' does not exist: b'D:/stocker/data/targets/Lilly(Eli)&Co/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/Lilly(Eli)&Co/daily_prices.csv' does not exist: b'D:/stocker/data/targets/Lilly(Eli)&Co/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/NewsCorpClassA/daily_prices.csv' does not exist: b'D:/stocker/data/targets/NewsCorpClassA/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/PoloRalphLaurenCorp/daily_prices.csv' does not exist: b'D:/stocker/data/targets/PoloRalphLaurenCorp/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/PoloRalphLaurenCorp/daily_prices.csv' does not exist: b'D:/stocker/data/targets/PoloRalphLaurenCorp/daily_prices.csv'
+Error reading target :  [Errno 2] File b'D:/stocker/data/targets/PublicServEnterpriseInc/daily_prices.csv' does not exist: b'D:/stocker/data/targets/PublicServEnterpriseInc/daily_prices.csv'
+Error reading target :  No columns to parse from file
+Error reading target :  No columns to parse from file
+Error reading target :  No columns to parse from file

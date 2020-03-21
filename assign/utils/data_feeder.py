@@ -11,37 +11,29 @@ import pickle
 
 import torch
 
-import keras.preprocessing.text as text
-import keras.preprocessing.sequence as seq
-from keras.utils import to_categorical
-
-from transformers import BertModel, BertTokenizer
-
-from nltk.tokenize import word_tokenize
-
-from sklearn.model_selection import train_test_split
-
-from ..utils.data_utils import *
+from ..utils.data_utils import load_audio, load_target
 
 from ..models.sentence_encoder import SENTENCE_ENCODER
 
 
 def data_loader(vars, mode='train', folder='', encoder=None, tokenizer=None, model=None, load_mode='text'):
-	data_folder = vars.DATA_PATH+'data'
+	data_folder = vars.DATA_PATH+'data__'
 	batch_size = 0
 
-	if len(folder) == 0:
-		if mode == 'train':
-			data_folder = data_folder+'/train/'
-			batch_size = vars.TRAIN_BATCH_SIZE
-		elif mode == 'valid':
-			data_folder = data_folder+'/valid/'
-			batch_size = vars.VALID_BATCH_SIZE
-		else:
-			data_folder = data_folder+'/test/'
-			batch_size = 1
+	print(folder)
+
+	# if len(folder) == 0:
+	if mode == 'train':
+		data_folder = data_folder+'/train/'
+		batch_size = vars.TRAIN_BATCH_SIZE
+	elif mode == 'valid':
+		data_folder = data_folder+'/valid/'
+		batch_size = vars.VALID_BATCH_SIZE
 	else:
+		data_folder = data_folder+'/test/'
 		batch_size = 1
+	# else:
+	# 	batch_size = 1
 
 	txts = []
 	auds = []
@@ -54,9 +46,11 @@ def data_loader(vars, mode='train', folder='', encoder=None, tokenizer=None, mod
 		if len(folder) == 0:
 			idx = np.random.choice(np.arange(0, len(all_datas)), batch_size, replace=False)[0]
 			folder = all_datas[idx]
-			company, start_date = folder.split('_')
-		else:
-			company, start_date = folder[folder.rindex('/')+1:].split('_')
+
+		company, start_date = folder.split('_')
+		# else:
+		# 	if mode == 'test':
+		# 		company, start_date = folder[folder.rindex('/')+1:].split('_')
 
 		if load_mode == 'audio' or load_mode == 'both':
 			aud_features = []
@@ -71,13 +65,11 @@ def data_loader(vars, mode='train', folder='', encoder=None, tokenizer=None, mod
 					features = []
 					for sentence in sentences:
 						tokens = tokenizer.encode(sentence, max_length=vars.MAX_SENTENCE_LENGTH, pad_to_max_length=True)
-						# tokens = torch.tensor([tokens])
 						outputs = model.predict(np.array([tokens], dtype=np.long))
-						# return
 						features.append(outputs)
 
 				except Exception as e:
-					print('Can\'t read! : ', e)
+					# print('Can\'t read! : ', e)
 					err = 'Text Data Read Error : {}'.format(data_folder+folder)
 					features = []
 
@@ -134,10 +126,12 @@ def data_loader(vars, mode='train', folder='', encoder=None, tokenizer=None, mod
 			if is_avail:
 				prices.append(labels)
 			else:
+				folder = ''
 				if mode == 'test':
 					err = 'Can\'t read target : {}, {}'.format(data_folder+folder, err)
 					return np.array([]), [], err
 		else:
+			folder = ''
 			err = 'Can\'t read target : {}'.format(data_folder+folder, error)
 			if mode == 'test':
 				return np.array([]), [], err

@@ -85,10 +85,10 @@ where $P_t$ is the closing price on day $t$
 </tr>
 <tr>
 <td>Text only</td>
-<td>3.407</td>
-<td>0.449</td>
-<td>0.381</td>
-<td>0.548</td>
+<td>1.879</td>
+<td>0.503</td>
+<td>0.373</td>
+<td>0.279</td>
 </tr>
 <tr>
 <td>Audio only</td>

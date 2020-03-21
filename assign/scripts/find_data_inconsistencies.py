@@ -15,8 +15,8 @@ def find_inconsistencies():
 
 	all_errors = ''
 
-	for i in listdir(vars.DATA_PATH+'data/'):
-		for j in listdir(vars.DATA_PATH+'data/'+i):
+	for i in listdir(vars.DATA_PATH+'data__/'):
+		for j in listdir(vars.DATA_PATH+'data__/'+i):
 			_, _, err = data_loader(
 				vars, mode='test',
 				folder='/'+i+'/'+j,

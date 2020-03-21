@@ -1,0 +1,58 @@
+test/SchlumbergerLtd_20170421 : Can't read target : D:/stocker/data/data__/test/SchlumbergerLtd_20170421
+test/SchlumbergerLtd_20170721 : Can't read target : D:/stocker/data/data__/test/SchlumbergerLtd_20170721
+test/SymantecCorp_20170510 : Can't read target : D:/stocker/data/data__/test/SymantecCorp_20170510
+test/TapestryInc_20170131 : Can't read target : D:/stocker/data/data__/test/TapestryInc_20170131
+test/TysonFoods_20170206 : Can't read target : D:/stocker/data/data__/test/TysonFoods_20170206
+test/UnitedHealthGroupInc_20170418 : Can't read target : D:/stocker/data/data__/test/UnitedHealthGroupInc_20170418
+test/UnitedHealthGroupInc_20171017 : Can't read target : D:/stocker/data/data__/test/UnitedHealthGroupInc_20171017
+test/SynopsysInc_20171129 : Can't read target : D:/stocker/data/data__/test/SynopsysInc_20171129, Text Data Read Error : D:/stocker/data/data__/test/SynopsysInc_20171129
+train/AlexionPharmaceuticals_20170427 : Can't read target : D:/stocker/data/data__/train/AlexionPharmaceuticals_20170427, No Audio Found: D:/stocker/data/data__/train/AlexionPharmaceuticals_20170427
+test/Walmart_20171116 : Can't read target : D:/stocker/data/data__/test/Walmart_20171116
+test/WelltowerInc_20170505 : Can't read target : D:/stocker/data/data__/test/WelltowerInc_20170505
+train/AmericanTowerCorpA_20170227 : Can't read target : D:/stocker/data/data__/train/AmericanTowerCorpA_20170227
+train/AmericanTowerCorpA_20170427 : Can't read target : D:/stocker/data/data__/train/AmericanTowerCorpA_20170427
+train/AmericanTowerCorpA_20171031 : Can't read target : D:/stocker/data/data__/train/AmericanTowerCorpA_20171031
+train/AOSmithCorp_20170726 : Can't read target : D:/stocker/data/data__/train/AOSmithCorp_20170726
+train/AT&TInc_20170425 : Can't read target : D:/stocker/data/data__/train/AT&TInc_20170425, No Audio Found: D:/stocker/data/data__/train/AT&TInc_20170425
+train/AT&TInc_20171024 : Can't read target : D:/stocker/data/data__/train/AT&TInc_20171024, No Audio Found: D:/stocker/data/data__/train/AT&TInc_20171024
+train/BookingHoldingsInc_20170509 : Can't read target : D:/stocker/data/data__/train/BookingHoldingsInc_20170509
+train/BookingHoldingsInc_20171106 : Can't read target : D:/stocker/data/data__/train/BookingHoldingsInc_20171106
+train/CboeGlobalMarkets_20170804 : Can't read target : D:/stocker/data/data__/train/CboeGlobalMarkets_20170804
+train/CBREGroup_20171103 : Can't read target : D:/stocker/data/data__/train/CBREGroup_20171103
+train/Church&Dwight_20170803 : Can't read target : D:/stocker/data/data__/train/Church&Dwight_20170803, No Audio Found: D:/stocker/data/data__/train/Church&Dwight_20170803
+train/Church&Dwight_20171102 : Can't read target : D:/stocker/data/data__/train/Church&Dwight_20171102, No Audio Found: D:/stocker/data/data__/train/Church&Dwight_20171102
+train/CMSEnergy_20170202 : Can't read target : D:/stocker/data/data__/train/CMSEnergy_20170202, No Audio Found: D:/stocker/data/data__/train/CMSEnergy_20170202
+train/DRHorton_20170124 : Can't read target : D:/stocker/data/data__/train/DRHorton_20170124
+train/DTEEnergyCo_20170726 : Can't read target : D:/stocker/data/data__/train/DTEEnergyCo_20170726, No Audio Found: D:/stocker/data/data__/train/DTEEnergyCo_20170726
+train/EdisonInt'l_20170501 : Can't read target : D:/stocker/data/data__/train/EdisonInt'l_20170501
+train/EmersonElectricCompany_20170207 : Can't read target : D:/stocker/data/data__/train/EmersonElectricCompany_20170207
+train/EmersonElectricCompany_20170502 : Can't read target : D:/stocker/data/data__/train/EmersonElectricCompany_20170502
+train/FortiveCorp_20170207 : Can't read target : D:/stocker/data/data__/train/FortiveCorp_20170207
+train/FortuneBrandsHome&Security_20170802 : Can't read target : D:/stocker/data/data__/train/FortuneBrandsHome&Security_20170802, No Audio Found: D:/stocker/data/data__/train/FortuneBrandsHome&Security_20170802
+train/GeneralGrowthPropertiesInc_20170501 : Can't read target : D:/stocker/data/data__/train/GeneralGrowthPropertiesInc_20170501
+train/GeneralGrowthPropertiesInc_20170802 : Can't read target : D:/stocker/data/data__/train/GeneralGrowthPropertiesInc_20170802
+train/GoodyearTire&Rubber_20170428 : Can't read target : D:/stocker/data/data__/train/GoodyearTire&Rubber_20170428, No Audio Found: D:/stocker/data/data__/train/GoodyearTire&Rubber_20170428
+train/HarrisCorporation_20170801 : Can't read target : D:/stocker/data/data__/train/HarrisCorporation_20170801
+train/HCAHoldings_20170502 : Can't read target : D:/stocker/data/data__/train/HCAHoldings_20170502
+train/IronMountainIncorporated_20170728 : Can't read target : D:/stocker/data/data__/train/IronMountainIncorporated_20170728, No Audio Found: D:/stocker/data/data__/train/IronMountainIncorporated_20170728
+train/JPMorganChase&Co_20170714 : Can't read target : D:/stocker/data/data__/train/JPMorganChase&Co_20170714, No Audio Found: D:/stocker/data/data__/train/JPMorganChase&Co_20170714
+train/JPMorganChase&Co_20171012 : Can't read target : D:/stocker/data/data__/train/JPMorganChase&Co_20171012, No Audio Found: D:/stocker/data/data__/train/JPMorganChase&Co_20171012
+train/KinderMorgan_20170419 : Can't read target : D:/stocker/data/data__/train/KinderMorgan_20170419
+train/KrogerCo_20170908 : Can't read target : D:/stocker/data/data__/train/KrogerCo_20170908, Text Data Read Error : D:/stocker/data/data__/train/KrogerCo_20170908
+train/Lilly(Eli)&Co_20170131 : Can't read target : D:/stocker/data/data__/train/Lilly(Eli)&Co_20170131
+train/Lilly(Eli)&Co_20170425 : Can't read target : D:/stocker/data/data__/train/Lilly(Eli)&Co_20170425
+train/Marsh&McLennan_20170727 : Can't read target : D:/stocker/data/data__/train/Marsh&McLennan_20170727, No Audio Found: D:/stocker/data/data__/train/Marsh&McLennan_20170727
+train/Marsh&McLennan_20171026 : Can't read target : D:/stocker/data/data__/train/Marsh&McLennan_20171026, No Audio Found: D:/stocker/data/data__/train/Marsh&McLennan_20171026
+train/Merck&Co_20170202 : Can't read target : D:/stocker/data/data__/train/Merck&Co_20170202, No Audio Found: D:/stocker/data/data__/train/Merck&Co_20170202
+train/Merck&Co_20170502 : Can't read target : D:/stocker/data/data__/train/Merck&Co_20170502, No Audio Found: D:/stocker/data/data__/train/Merck&Co_20170502
+train/Merck&Co_20170728 : Can't read target : D:/stocker/data/data__/train/Merck&Co_20170728, No Audio Found: D:/stocker/data/data__/train/Merck&Co_20170728
+train/Merck&Co_20171027 : Can't read target : D:/stocker/data/data__/train/Merck&Co_20171027, No Audio Found: D:/stocker/data/data__/train/Merck&Co_20171027
+train/MichaelKorsHoldings_20170207 : Can't read target : D:/stocker/data/data__/train/MichaelKorsHoldings_20170207
+train/NewsCorpClassA_20170509 : Can't read target : D:/stocker/data/data__/train/NewsCorpClassA_20170509
+train/PG&ECorp_20170727 : Can't read target : D:/stocker/data/data__/train/PG&ECorp_20170727, No Audio Found: D:/stocker/data/data__/train/PG&ECorp_20170727
+train/PoloRalphLaurenCorp_20170202 : Can't read target : D:/stocker/data/data__/train/PoloRalphLaurenCorp_20170202
+train/PoloRalphLaurenCorp_20171102 : Can't read target : D:/stocker/data/data__/train/PoloRalphLaurenCorp_20171102
+train/PublicServEnterpriseInc_20170428 : Can't read target : D:/stocker/data/data__/train/PublicServEnterpriseInc_20170428
+valid/RedHatInc_20170327 : Can't read target : D:/stocker/data/data__/valid/RedHatInc_20170327
+valid/RedHatInc_20170925 : Can't read target : D:/stocker/data/data__/valid/RedHatInc_20170925
+valid/RedHatInc_20171219 : Can't read target : D:/stocker/data/data__/valid/RedHatInc_20171219

@@ -25,6 +25,7 @@ class TEXT_ENCODER(BASE):
 		super(TEXT_ENCODER, self).__init__(vars)
 
 		self.graph = tf.get_default_graph()
+		self.load_mode = 'text'
 
 		self.DATA_LOADER = DATA_LOADER
 		self.data_feeder = data_loader

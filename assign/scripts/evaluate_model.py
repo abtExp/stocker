@@ -19,7 +19,8 @@ from transformers import BertTokenizer
 import tensorflow as tf
 
 
-def evaluate(vars, eval_model='text_model'):
+
+def evaluate(vars, eval_model='text_model', weights_path=''):
 	tokenizer = None
 	text_encoder = None
 	audio_encoder = None
@@ -31,14 +32,15 @@ def evaluate(vars, eval_model='text_model'):
 		audio_encoder = SPEAKER_ENCODER(vars, graph=tf.get_default_graph())
 		model = SPEECH_ENCODER(vars)
 
-	model.load_weights(vars.CHECK_PATH+eval_model+'/'+listdir(vars.CHECK_PATH+eval_model)[-1])
+	# vars.CHECK_PATH+eval_model+'/'+listdir(vars.CHECK_PATH+eval_model)[-1]
+	model.load_weights(weights_path)
 
-	data_folder = vars.DATA_PATH+'data/test/'
+	data_folder = vars.DATA_PATH+'data__/test/'
 
 	all_datas = {}
 
 	for folder in listdir(data_folder):
-			tx, ty = data_loader(vars, mode='test', folder=folder, encoder=audio_encoder, tokenizer=tokenizer, model=text_encoder, load_mode=eval_model[:eval_model.rindex('_')])
+			tx, ty, _ = data_loader(vars, mode='test', folder=folder, encoder=audio_encoder, tokenizer=tokenizer, model=text_encoder, load_mode=eval_model[:eval_model.rindex('_')])
 
 			if len(tx.shape) > 1:
 				print('Evaluating...')
@@ -64,10 +66,6 @@ def evaluate(vars, eval_model='text_model'):
 							all_datas[period] = [mse]
 						else:
 							all_datas[period].append(mse)
-
-
-	with open('./eval.json', 'w') as f:
-		json.dump(all_datas, f)
 
 	for period in all_datas.keys():
 		print('Average MSE of Past Volatilities For Period : {} days = {}'.format(period, np.mean(all_datas[period])))

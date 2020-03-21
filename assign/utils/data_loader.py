@@ -15,8 +15,7 @@ class DATA_LOADER(Sequence):
 		self.load_mode = load_mode
 		self.tokenizer = None
 		self.text_encoder = None
-
-		print('LOAD MODE : ', self.load_mode)
+		self.speech_encoder = None
 
 		if self.load_mode == 'text' or self.load_mode == 'both':
 			self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -25,11 +24,11 @@ class DATA_LOADER(Sequence):
 			self.speech_encoder = SPEAKER_ENCODER(self.vars, graph=self.graph)
 
 	def __getitem__(self, index):
-		x, y = self.__data_generation([])
+		x, y, _ = self.__data_generation([])
 		return x, y
 
 	def __len__(self):
-		return 100
+		return 1
 
 	def __data_generation(self, l):
 		return self.loader(self.vars, self.mode, encoder=self.speech_encoder, tokenizer=self.tokenizer, model=self.text_encoder, load_mode=self.load_mode)
