@@ -7,7 +7,7 @@ from datetime import datetime
 import time
 
 from os import listdir, mkdir
-from os.path import isdir
+from os.path import isdir, exists
 
 import json
 
@@ -67,11 +67,11 @@ def download_csv(vars, comp_code, start_date, end_date):
 
 
 
-def get_companies_dates(vars):
+def get_companies_dates(vars, comp_code='', start_date='', end_date=''):
 	comp_info = pd.read_csv(vars.DATA_PATH+'comp_codes.csv')
 
 	# comp_date_dict
-	with open('D:/iiit_assign/comp_with_dates.json', 'r', encoding='utf-8') as f:
+	with open('D:/stocker/comp_with_dates.json', 'r', encoding='utf-8') as f:
 		comp_date_dict = json.load(f)
 
 	comps = np.array(comp_info[['Name', 'Ticker']])
@@ -109,3 +109,26 @@ def get_companies_dates(vars):
 
 		else:
 			print('#### Couldn\'t Find {}'.format(comp))
+
+
+def get_stocks(vars):
+	with open('D:/stocker/missing_targets.txt', 'r') as f:
+		data = f.read()
+		lines = data.split('\n')
+		for line in lines:
+			comp_code, start_date, end_date = line.split(' ')
+			start_date = '{}-{}-{}'.format(start_date[:4], start_date[4:6], start_date[6:])
+			end_date = '{}-{}-{}'.format(end_date[:4], end_date[4:6], end_date[6:])
+
+			start_date = str(int(time.mktime(pd.to_datetime(start_date).timetuple())))
+			start_date = str(int(start_date) - int(2678400))
+			end_date = time.mktime(pd.to_datetime(end_date).timetuple())
+			end_date = str(int(end_date) + int(2678400))
+
+			data = download_csv(vars, comp_code, start_date, end_date)
+
+			if not exists('D:/stocker/data/targets/'+comp_code):
+				mkdir('D:/stocker/data/targets/'+comp_code)
+
+			with open('D:/stocker/data/targets/'+comp_code+'/daily_prices.csv', 'w') as f:
+				f.write(data.decode('utf-8'))
