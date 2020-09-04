@@ -1,4 +1,6 @@
 # Stock Price Prediction Using Multi-Modal Features (Audio + Text Transcripts)
+Made as part of the Interview Assignment For RA Position at IIIT-Delhi MIDAS Labs.
+(I got selected, but due to some unfortunate circumstances at my then workplace, i wasn't able to continue.)
 
 ###### Data
 The data consists of the audio recordings of quarterly board performance meetings where the stock performance of publically traded companies is announced and predictions for future performance are made. The data also consists of the text transcripts of the same meetings. The target is the stock prices for the next 30 days.
